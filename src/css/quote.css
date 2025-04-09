@@ -1,0 +1,113 @@
+.excercises {
+  display: flex;
+  /* flex-direction: column; Stack items vertically by default */
+  align-items: stretch; /* Stretch items to container width */
+  gap: 20px; /* Add some gap between the quote and main content */
+  
+}
+
+.column-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Space between the three sections */
+  width: 444px;
+}
+
+.quote-of-the-day {
+  background-color: #242424; /* Very light gray, slightly different from body */
+  padding: 40px;
+  border-radius: 12px; /* Slightly more rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  margin-bottom: 0;
+  display: flex;
+  gap: 18px;
+}
+
+.quote-of-the-day h2 {
+  font-size: 1.5rem; /* Larger heading */
+  color: #F4F4F4; /* Darker heading color */
+  margin-bottom: 10px;
+  font-weight: 600; /* Make heading bold */
+}
+
+.quote-of-the-day p {
+  font-size: 0.9rem; /* Slightly smaller body text */
+  color: #F4F4F4; /* Slightly darker body text */
+  line-height: 1.6; /* Increased line height for better readability */
+  opacity: .6;
+}
+
+.quote-of-the-day .author {
+  font-size: 1rem;
+  color: #F4F4F4;
+  margin-top: 15px;
+  opacity: 1;
+}
+
+.image-section {
+  /* No background color, more modern look */
+  border-radius: 12px;
+  overflow: hidden; /* Ensure image doesn't overflow rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.image-section img {
+  width: 100%; /* Make image fill the container */
+  height: auto; /* Maintain image aspect ratio */
+  display: block; /*removes extra space below image*/
+}
+
+.daily-norm {
+  background-color: #f0f0f0; /* Light gray background */
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  display: flex;
+}
+
+.daily-norm h2 {
+  font-size: 1.5rem; /* Larger heading */
+  color: #333;
+  margin-bottom: 0px;
+  font-weight: 600; /* Make heading bold */
+}
+
+.daily-norm .sub-title {
+  font-size: .875rem;
+  color: #242424;
+  opacity: .6;
+  margin-bottom: 16px;
+}
+.daily-norm p {
+  font-size: 0.9rem; /* Slightly smaller body text */
+  color: #555;
+  line-height: 1.6; /* Increased line height */
+}
+
+.icon-col {
+  display: flex;
+}
+.icon-col span {
+  width: 32px
+}
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .container {
+      padding: 15px;
+  }
+  .column-layout {
+      gap: 15px;
+  }
+  .quote-of-the-day,
+  .daily-norm {
+      padding: 15px;
+  }
+  .quote-of-the-day h2,
+  .daily-norm h2{
+      font-size: 1.2rem;
+  }
+  .quote-of-the-day p,
+  .daily-norm p {
+      font-size: 0.85rem;
+  }
+}

@@ -10,6 +10,7 @@
 @import url('./container.css');
 
 /* Sections style */
-@import url('./header.css');
+/* @import url('./header.css'); */
 @import url('./filters.css');
-@import url('./footer.css');
+@import url('./quote.css');
+/* @import url('./footer.css'); */
