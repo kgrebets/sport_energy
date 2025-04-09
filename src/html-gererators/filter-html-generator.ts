@@ -16,9 +16,17 @@ export function generateFiltersHtml(items: FilterItem[]) {
 export function generatePaginationHtml(totalPages: number, currentPage: number): string {
   const pagesToShow: number[] = [];
 
-  pagesToShow.push(1);
-  if (totalPages >= 2) pagesToShow.push(2);
-  if (totalPages >= 3) pagesToShow.push(3);
+  const maxVisible = 3;
+  let startPage = Math.max(1, currentPage - 1);
+  let endPage = Math.min(totalPages, startPage + maxVisible - 1);
+
+  if (endPage - startPage + 1 < maxVisible) {
+    startPage = Math.max(1, endPage - maxVisible + 1);
+  }
+
+  for (let page = startPage; page <= endPage; page++) {
+    pagesToShow.push(page);
+  }
 
   return pagesToShow.map(page => `
     <span class="pagination-page${page === currentPage ? ' active' : ''}" data-page="${page}">${page}</span>
