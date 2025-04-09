@@ -23,6 +23,7 @@
   gap: 18px;
 }
 
+
 .quote-of-the-day h2 {
   font-size: 1.5rem; /* Larger heading */
   color: #F4F4F4; /* Darker heading color */
@@ -63,6 +64,7 @@
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   display: flex;
+  gap: 20px;
 }
 
 .daily-norm h2 {
