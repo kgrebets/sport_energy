@@ -20,14 +20,13 @@ export function initFilters() {
 
         getFilters({ filter, page, limit })
             .then(response => {
-                filtersOutputContainer.innerHTML = generateFiltersHtml(response.results);
-                paginationContainer.innerHTML = generatePaginationHtml(response.totalPages, page);
+                filtersOutputContainer!.innerHTML = generateFiltersHtml(response.results);
+                paginationContainer!.innerHTML = generatePaginationHtml(response.totalPages, page);
             })
             .catch(error => showErrorMessage({
                 title: 'Error',
                 message: error.message,
                 position: 'topRight',
-                timeout: 5000
             }));
     }
 

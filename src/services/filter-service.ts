@@ -1,16 +1,11 @@
+import { makeGetRequest } from "../js/services/request";
 import { FilterRequest } from "../js/types/request.types";
-import { FilterResponse } from "../models/filter-response";
-import { ApiConfig } from "./api-config";
+import { FiltersResponse } from "../js/types/response.types";
 
-export async function getFilters(filterRequest: FilterRequest): Promise<FilterResponse> {
-    const url = `${ApiConfig.ApiBaseUrl}/filters?filter=${encodeURIComponent(filterRequest.filter)}&page=${filterRequest.page}&limit=${filterRequest.limit}`;
-
-    const response = await fetch(url);
-
-    if (!response.ok) {
-        throw new Error(`Failed to fetch filters: ${response.status}`);
+export async function getFilters(filterRequest: FilterRequest): Promise<FiltersResponse> {
+    const response = await makeGetRequest<FilterRequest, FiltersResponse>("filters", filterRequest);
+    if (!response) {
+        throw new Error("Cant' get filters");
     }
-
-    const data = await response.json();
-    return FilterResponse.fromJson(data);
+    return response;
 }

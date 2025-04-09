@@ -5,7 +5,7 @@ export type SubscriptionResponse = {
 export type FilterResponse = {
   filter: string;
   name: string;
-  imgUrl: string;
+  imgURL: string;
 }
 
 export type FiltersResponse = {

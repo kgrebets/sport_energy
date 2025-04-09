@@ -1,9 +1,9 @@
-import { FilterItem } from "../models/filter-tem";
+import { FilterResponse } from "../js/types/response.types";
 
-export function generateFiltersHtml(items: FilterItem[]) {
+export function generateFiltersHtml(items: FilterResponse[]) {
   return items.map(item => `
           <div class="filter-card">
-            <img src="${item.imgUrl}" alt="${item.name}" />
+            <img src="${item.imgURL}" alt="${item.name}" />
             <div class="filter-info">
               <div class="filter-name">${item.name}</div>
               <div class="filter-type">${item.filter}</div>
