@@ -3,7 +3,7 @@ import { ApiConfig } from "./api-config";
 
 export class FilterService {
 
-    async getFilters(
+    static async getFilters(
         filter: string,
         page: number,
         limit: number
