@@ -88,7 +88,7 @@
   }
   
   /* Pagination */
-  .pagination {
+  .filter-pagination {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -96,7 +96,7 @@
     margin: 24px 0;
   }
   
-  .pagination-page {
+  .filter-pagination .pagination-page {
     font-weight: 600;
     font-size: 1.1em;
     color: #333;
@@ -106,14 +106,15 @@
     transition: background-color 0.3s ease;
   }
   
-  .pagination-page:hover {
+  .filter-pagination .pagination-page:hover {
     background-color: #e6f2ff;
   }
   
-  .pagination-page.active {
+  .filter-pagination .pagination-page.active {
     background-color: #1296f0;
     color: white;
   }
+  
   
   /* Responsive */
   @media (max-width: 600px) {
