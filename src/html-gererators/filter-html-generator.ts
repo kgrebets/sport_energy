@@ -1,9 +1,7 @@
 import { FilterItem } from "../models/filter-tem";
 
-export class FilterHtmlGenerator {
-
-    public static generateFiltersHtml(items: FilterItem[]) {
-        return items.map(item => `
+export function generateFiltersHtml(items: FilterItem[]) {
+  return items.map(item => `
           <div class="filter-card">
             <img src="${item.imgUrl}" alt="${item.name}" />
             <div class="filter-info">
@@ -12,6 +10,5 @@ export class FilterHtmlGenerator {
             </div>
           </div>
         `)
-            .join('');
-    }
+    .join('');
 }
