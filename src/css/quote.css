@@ -86,9 +86,25 @@
 
 .icon-col {
   display: flex;
+  position: relative;
 }
-.icon-col span {
-  width: 32px
+
+.col {
+  position: relative;
+}
+
+.running-icon {
+  background-color: #F4F4F433;
+  border-radius: 50%;
+}
+.running-icon use {
+  transform: translate(5px, 5px);
+}
+
+.quote-icon {
+  position: absolute;
+  top: 0;
+  right: 16px;
 }
 /* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
