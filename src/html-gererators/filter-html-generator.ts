@@ -1,21 +1,26 @@
-import { FilterResponse } from "../js/types/response.types";
+import { FilterResponse } from '../js/types/response.types';
 
 export function generateFiltersHtml(items: FilterResponse[]) {
-  return items.map(item => `
-          <div class="filter-card">
+  return items
+    .map(
+      item => `
+          <div class="filter-card" data-filter-type="${item.filter}" data-filter-name="${item.name}">
             <img src="${item.imgURL}" alt="${item.name}" />
             <div class="filter-info">
               <div class="filter-name">${item.name}</div>
               <div class="filter-type">${item.filter}</div>
             </div>
           </div>
-        `)
+        `
+    )
     .join('');
 }
 
-export function generatePaginationHtml(totalPages: number, currentPage: number): string {
+export function generatePaginationHtml(
+  totalPages: number,
+  currentPage: number
+): string {
   const pagesToShow: number[] = [];
-
   const maxVisible = 3;
   let startPage = Math.max(1, currentPage - 1);
   let endPage = Math.min(totalPages, startPage + maxVisible - 1);
@@ -28,7 +33,13 @@ export function generatePaginationHtml(totalPages: number, currentPage: number):
     pagesToShow.push(page);
   }
 
-  return pagesToShow.map(page => `
-    <span class="pagination-page${page === currentPage ? ' active' : ''}" data-page="${page}">${page}</span>
-  `).join('');
+  return pagesToShow
+    .map(
+      page => `
+    <span class="pagination-page${
+      page === currentPage ? ' active' : ''
+    }" data-page="${page}">${page}</span>
+  `
+    )
+    .join('');
 }

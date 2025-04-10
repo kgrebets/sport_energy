@@ -1,9 +1,22 @@
-<ul class="filter-tabs">
-  <li class="active" data-filter="Muscles">Muscles</li>
-  <li data-filter="Body parts">Body parts</li>
-  <li data-filter="Equipment">Equipment</li>
-</ul>
+<section class="exercises-section">
+  <div class="container">
+    <h2 class="section-title">Exercises</h2>
 
-<div class="filters-output"></div>
+    <!-- Filter Tabs -->
+    <ul class="filter-tabs">
+      <li class="filter-tab active" data-filter="Muscles">Muscles</li>
+      <li class="filter-tab" data-filter="Body parts">Body parts</li>
+      <li class="filter-tab" data-filter="Equipment">Equipment</li>
+    </ul>
 
-<div class="filter-pagination"></div>
+    <!-- Container for Filter Categories -->
+    <div class="filters-output"></div>
+    <div class="filter-pagination"></div>
+
+    <!-- Container for Exercise Cards and Pagination -->
+    <div class="exercises-content">
+      <ul class="exercises-list"></ul>
+      <div class="pagination"></div>
+    </div>
+  </div>
+</section>
