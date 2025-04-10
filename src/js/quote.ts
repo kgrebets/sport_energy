@@ -27,7 +27,7 @@ function getStoredQuote(): QuoteResponse | null {
   return null;
 }
 
-function updateQuoteDisplay(quote: string, author: string) {
+function updateQuoteDisplay(quote: string, author: string): void {
   if (!quoteTextElement || !quoteAuthorElement) {
     throw new Error("Can't find quote elements");
   }
@@ -35,7 +35,7 @@ function updateQuoteDisplay(quote: string, author: string) {
   quoteAuthorElement.textContent = author;
 }
 
-function storeQuote(quote: string, author: string) {
+function storeQuote(quote: string, author: string): void {
   const quoteData = JSON.stringify({ quote, author });
   const today = getCurrentDate();
   localStorage.setItem(QUOTE_STORAGE_KEY, quoteData);
@@ -56,7 +56,7 @@ async function fetchNewQuote(): Promise<QuoteResponse | null> {
   }
 }
 
-export async function fetchQuote() {
+export async function fetchQuote(): Promise<void> {
   if (!quoteTextElement || !quoteAuthorElement) {
     throw new Error("Can't find quote elements");
   }
