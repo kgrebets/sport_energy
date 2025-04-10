@@ -9,26 +9,35 @@
 .column-layout {
   display: flex;
   flex-direction: column;
+  align-items: stretch;
+  justify-content: stretch;
   gap: 20px; /* Space between the three sections */
-  width: 444px;
+  /* width: 444px; */
 }
 
 .quote-of-the-day {
   background-color: #242424; /* Very light gray, slightly different from body */
   padding: 40px;
   border-radius: 12px; /* Slightly more rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   margin-bottom: 0;
   display: flex;
   gap: 18px;
+  box-sizing: border-box;
 }
-
 
 .quote-of-the-day h2 {
   font-size: 1.5rem; /* Larger heading */
   color: #F4F4F4; /* Darker heading color */
   margin-bottom: 10px;
   font-weight: 600; /* Make heading bold */
+  display: flex;
+  justify-content: space-between;
+}
+
+.quote-of-the-day h2 .quote-icon {
+  width: 1.5rem; /* Adjust icon size */
+  position: relative;
+  top: -6px; /* Adjust icon position to align with text */
 }
 
 .quote-of-the-day p {
@@ -49,22 +58,21 @@
   /* No background color, more modern look */
   border-radius: 12px;
   overflow: hidden; /* Ensure image doesn't overflow rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  background-image: url(./../img/2-girls-walking.jpg);
+  background-size: cover;
+  background-position: top center;
+  flex-grow: 1;
+  height: 242px;
 }
 
-.image-section img {
-  width: 100%; /* Make image fill the container */
-  height: auto; /* Maintain image aspect ratio */
-  display: block; /*removes extra space below image*/
-}
 
 .daily-norm {
   background-color: #f0f0f0; /* Light gray background */
   padding: 40px;
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   display: flex;
   gap: 20px;
+  box-sizing: border-box;
 }
 
 .daily-norm h2 {
@@ -103,29 +111,48 @@
   transform: translate(5px, 5px);
 }
 
-.quote-icon {
-  position: absolute;
-  top: 0;
-  right: 16px;
-}
 /* Responsive adjustments for smaller screens */
-@media (max-width: 768px) {
-  .container {
-      padding: 15px;
-  }
+@media (max-width: 1024px) {
   .column-layout {
-      gap: 15px;
-  }
-  .quote-of-the-day,
-  .daily-norm {
-      padding: 15px;
-  }
-  .quote-of-the-day h2,
-  .daily-norm h2{
-      font-size: 1.2rem;
+    gap: 16px;
+    flex-direction: row;
+    flex-wrap: wrap;  
+    width: 100%;
   }
   .quote-of-the-day p,
   .daily-norm p {
-      font-size: 0.85rem;
+    font-size: 0.85rem;
+  }
+  .quote-of-the-day {
+    flex-grow: 6;
+    max-width: 488px;
+  }
+  .image-section {
+    /* max-width: calc(40% - 46px); */
+    flex-grow: 4;
+  }
+  .daily-norm {
+    flex: 1 0 100%;
+  }
+  
+  .excercises {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .quote-of-the-day h2,
+  .daily-norm h2 {
+    font-size: 1.25rem;
+  }
+  .quote-of-the-day, .daily-norm {
+    max-width: 100%;
+    padding: 20px;
+  }
+  .image-section {
+    width: 100%;
+  }
+  .quote-icon {
+    width: 1rem;
   }
 }
