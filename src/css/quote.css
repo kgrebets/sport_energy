@@ -16,9 +16,9 @@
 }
 
 .quote-of-the-day {
-  background-color: #242424; /* Very light gray, slightly different from body */
+  background-color: var(--color-dark-gray);; /* Very light gray, slightly different from body */
   padding: 40px;
-  border-radius: 12px; /* Slightly more rounded corners */
+  border-radius: var(--border-radius-m); /* Slightly more rounded corners */
   margin-bottom: 0;
   display: flex;
   gap: 18px;
@@ -27,7 +27,7 @@
 
 .quote-of-the-day h2 {
   font-size: 1.5rem; /* Larger heading */
-  color: #F4F4F4; /* Darker heading color */
+  color: var( --color-light-gray); /* Darker heading color */
   margin-bottom: 10px;
   font-weight: 600; /* Make heading bold */
   display: flex;
@@ -42,20 +42,20 @@
 
 .quote-of-the-day p {
   font-size: 0.9rem;
-  color: #F4F4F4;
+  color: var( --color-light-gray);
   line-height: 1.6;
   opacity: .6;
 }
 
 .quote-of-the-day .author {
   font-size: 1rem;
-  color: #F4F4F4;
+  color: var( --color-light-gray);
   margin-top: 15px;
   opacity: 1;
 }
 
 .image-section {
-  border-radius: 12px;
+  border-radius: var(--border-radius-m);
   overflow: hidden;
   background-image: url(./../img/2-girls-walking.jpg);
   background-size: cover;
@@ -66,9 +66,9 @@
 
 
 .daily-norm {
-  background-color: #f0f0f0;
+  background-color: var(--color-white);
   padding: 40px;
-  border-radius: 12px;
+  border-radius: var(--border-radius-m);
   display: flex;
   gap: 20px;
   box-sizing: border-box;
@@ -83,7 +83,7 @@
 
 .daily-norm .sub-title {
   font-size: .875rem;
-  color: #242424;
+  color: var(--color-dark-gray);
   opacity: .6;
   margin-bottom: 16px;
 }
