@@ -31,25 +31,25 @@
 
   /* Colors */
   --color-dark-gray: #242424;
-  --color-dark-gray-10: #2424241A;
+  --color-dark-gray-10: #2424241a;
   --color-dark-gray-50: #24242480;
   --color-dark-gray-60: #24242499;
-  --color-dark-gray-80: #242424CC;
-  --color-light-gray: #F4F4F4;
-  --color-light-gray-20: #F4F4F433;
-  --color-light-gray-60: #F4F4F499;
-  --color-light-gray-secondary: #D4D4D4;
+  --color-dark-gray-80: #242424cc;
+  --color-light-gray: #f4f4f4;
+  --color-light-gray-20: #f4f4f433;
+  --color-light-gray-60: #f4f4f499;
+  --color-light-gray-secondary: #d4d4d4;
   --color-black-20: #04040433;
-  --color-white: #FFFFFF;
-  --color-accent-yellow: #EEA10C;
+  --color-white: #ffffff;
+  --color-accent-yellow: #eea10c;
 
   /* Font */
   --font-family-primary: 'DM Sans';
 
   /* Font weights */
-  --font-wegihth-regular: 400;
-  --font-wegihth-medium: 500;
-  --font-wegihth-bold: 700;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
 
   /* Font sizes */
   --font-size-xs: 14px;
@@ -77,7 +77,7 @@ body {
   line-height: var(--line-height-l);
   color: var(--color-dark-gray);
   letter-spacing: 0;
-  font-weight: var(--font-wegihth-regular);
+  font-weight: var(--font-weight-regular);
   display: flex;
   flex-direction: column;
   min-width: 100vw;
