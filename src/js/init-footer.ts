@@ -1,7 +1,13 @@
 import { showErrorMessage, showSuccessMessage } from './utils/toasts';
+import { makePostRequest } from './services/request';
 
 export function initFooter() {
   const form = document.getElementById('subscription-form') as HTMLFormElement;
+
+  const footerYearElement = document.querySelector('.footer-year p');
+  if (footerYearElement) {
+    footerYearElement.textContent = `©${new Date().getFullYear()}`;
+  }
 
   if (!form) {
     return;
@@ -25,18 +31,12 @@ export function initFooter() {
     }
 
     try {
-      const response = await fetch(
-        'https://your-energy.b.goit.study/api/subscription',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email }),
-        }
+      const response = await makePostRequest<{ email: string }, any>(
+        'subscription',
+        { email }
       );
 
-      if (!response.ok) {
+      if (!response) {
         throw new Error('Subscription failed');
       }
 
@@ -47,13 +47,7 @@ export function initFooter() {
         message: 'Thank you for subscribing!',
         position: 'topRight',
       });
-    } catch (error) {
-      showErrorMessage({
-        title: 'Error',
-        message: 'Failed to subscribe. Please try again later.',
-        position: 'topRight',
-      });
-    }
+    } catch (error) {}
   }
 
   function isValidEmail(email: string): boolean {
