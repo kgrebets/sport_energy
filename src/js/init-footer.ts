@@ -1,5 +1,6 @@
 import { showErrorMessage, showSuccessMessage } from './utils/toasts';
 import { makePostRequest } from './services/request';
+import { SubscriptionRequest } from './types/request.types';
 
 export function initFooter() {
   const form = document.getElementById('subscription-form') as HTMLFormElement;
@@ -31,12 +32,12 @@ export function initFooter() {
     }
 
     try {
-      const response = await makePostRequest<{ email: string }, any>(
+      const response = await makePostRequest<SubscriptionRequest, void>(
         'subscription',
         { email }
       );
 
-      if (!response) {
+      if (response === undefined) {
         throw new Error('Subscription failed');
       }
 
@@ -47,7 +48,13 @@ export function initFooter() {
         message: 'Thank you for subscribing!',
         position: 'topRight',
       });
-    } catch (error) {}
+    } catch (error) {
+      showErrorMessage({
+        title: 'Error',
+        message: 'Failed to subscribe. Please try again later.',
+        position: 'topRight',
+      });
+    }
   }
 
   function isValidEmail(email: string): boolean {
