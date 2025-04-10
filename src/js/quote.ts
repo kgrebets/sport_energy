@@ -1,40 +1,77 @@
 import { getQuote } from "../services/quote-service";
+import { QuoteResponse } from "./types/response.types";
 
 const quoteTextElement = document.getElementById("quote-text");
 const quoteAuthorElement = document.getElementById("quote-author");
 
-export async function fetchQuote() {
-    const today = new Date().toISOString().split("T")[0];
-    const storedQuote = localStorage.getItem("quote");
-    const storedDate = localStorage.getItem("quoteDate");
-    if (!quoteTextElement || !quoteAuthorElement) {
-      throw new Error("Can't find quote elements");
-    }
-    if (storedQuote && storedDate === today) {
-        const { quote, author } = JSON.parse(storedQuote);
-        quoteTextElement.textContent = quote;
-        quoteAuthorElement.textContent = author;
-        return;
-    }
+const QUOTE_STORAGE_KEY = "quote";
+const QUOTE_DATE_STORAGE_KEY = "quoteDate";
 
-    try {
-        const data = await getQuote();
-        if (data && data.quote) {
-            const { quote, author } = data;
-            const quoteData = JSON.stringify({ quote, author });
-            localStorage.setItem("quote", quoteData);
-            localStorage.setItem("quoteDate", today);
-
-            quoteTextElement.textContent = quote;
-            quoteAuthorElement.textContent = author;
-        } else {
-            quoteTextElement.textContent = "Failed to fetch quote.";
-            quoteAuthorElement.textContent = "";
-        }
-    } catch (error) {
-        console.error("Error fetching quote:", error);
-        quoteTextElement.textContent = "Failed to fetch quote.";
-        quoteAuthorElement.textContent = "";
-    }
+function getCurrentDate(): string {
+  return new Date().toISOString().split("T")[0];
 }
 
+function getStoredQuote(): QuoteResponse | null {
+  const storedQuote = localStorage.getItem(QUOTE_STORAGE_KEY);
+  const storedDate = localStorage.getItem(QUOTE_DATE_STORAGE_KEY);
+  const today = getCurrentDate();
+
+  if (storedQuote && storedDate === today) {
+    try {
+      return JSON.parse(storedQuote);
+    } catch (error) {
+      console.error("Error parsing stored quote:", error);
+      return null;
+    }
+  }
+  return null;
+}
+
+function updateQuoteDisplay(quote: string, author: string) {
+  if (!quoteTextElement || !quoteAuthorElement) {
+    throw new Error("Can't find quote elements");
+  }
+  quoteTextElement.textContent = quote;
+  quoteAuthorElement.textContent = author;
+}
+
+function storeQuote(quote: string, author: string) {
+  const quoteData = JSON.stringify({ quote, author });
+  const today = getCurrentDate();
+  localStorage.setItem(QUOTE_STORAGE_KEY, quoteData);
+  localStorage.setItem(QUOTE_DATE_STORAGE_KEY, today);
+}
+
+async function fetchNewQuote(): Promise<QuoteResponse | null> {
+  try {
+    const data = await getQuote();
+    if (data && data.quote) {
+      return { quote: data.quote, author: data.author };
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.error("Error fetching quote:", error);
+    return null;
+  }
+}
+
+export async function fetchQuote() {
+  if (!quoteTextElement || !quoteAuthorElement) {
+    throw new Error("Can't find quote elements");
+  }
+
+  const storedQuoteData = getStoredQuote();
+  if (storedQuoteData) {
+    updateQuoteDisplay(storedQuoteData.quote, storedQuoteData.author);
+    return;
+  }
+
+  const newQuoteData = await fetchNewQuote();
+  if (newQuoteData) {
+    storeQuote(newQuoteData.quote, newQuoteData.author);
+    updateQuoteDisplay(newQuoteData.quote, newQuoteData.author);
+  } else {
+    updateQuoteDisplay("Failed to fetch quote.", "");
+  }
+}
