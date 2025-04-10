@@ -1,5 +1,3 @@
-import { makeGetRequest } from "./services/request";
-
 const quoteTextElement = document.getElementById("quote-text");
 const quoteAuthorElement = document.getElementById("quote-author");
 
