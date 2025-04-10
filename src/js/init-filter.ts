@@ -49,7 +49,7 @@ export function initFilters() {
 
     paginationContainer.addEventListener('click', (event) => {
         const target = event.target as HTMLElement;
-        if (target.tagName.toLowerCase() !== 'span') return;
+        if (target.tagName.toLowerCase() !== 'li') return;
 
         const newPage = Number(target.dataset.page);
         if (!newPage || newPage === currentPage) return;

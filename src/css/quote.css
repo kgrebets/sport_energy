@@ -3,7 +3,6 @@
   /* flex-direction: column; Stack items vertically by default */
   align-items: stretch; /* Stretch items to container width */
   gap: 20px; /* Add some gap between the quote and main content */
-  
 }
 
 .column-layout {
