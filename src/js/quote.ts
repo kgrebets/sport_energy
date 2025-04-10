@@ -1,3 +1,5 @@
+import { getQuote } from "../services/quote-service";
+
 const quoteTextElement = document.getElementById("quote-text");
 const quoteAuthorElement = document.getElementById("quote-author");
 
@@ -16,8 +18,7 @@ export async function fetchQuote() {
     }
 
     try {
-        const response = await fetch("https://your-energy.b.goit.study/api/quote", { method: "GET" });
-        const data = await response.json();
+        const data = await getQuote();
         if (data && data.quote) {
             const { quote, author } = data;
             const quoteData = JSON.stringify({ quote, author });
