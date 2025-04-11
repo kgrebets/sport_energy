@@ -1,21 +1,3 @@
-import { capitalizeFirstLetter } from '../js/utils/capitalizeFirstLetter';
-
-export function filterMarkup(
-  filter: string,
-  name: string,
-  imgURL: string
-): string {
-  return `
-<li class="exercises-filter-tile-item" data-name="${name}" data-filter="${filter.toLowerCase()}">
-  <div class="exercises-filter-tile-gradient"></div>
-  <img class="exercises-filter-tile-img" src="${imgURL}" alt="${name}" onerror="this.onerror=null; this.src='./../img/no-image.jpg'"/>
-  <div class="exercises-filter-tile-text-wrapper">
-      <h3 class="exercises-filter-tile-headline">${capitalizeFirstLetter(name)}</h3>
-     <p class="exercises-filter-tile-text">${filter}</p>
-  </div>
-</li>`;
-}
-
 export function exercisesMarkup(
   rating: number,
   name: string,
@@ -63,11 +45,11 @@ export function exercisesMarkup(
       </li>
       <li class="exercises-category-tile-bottom-item">
         <span class="exercises-category-tile-bottom-title">Body part:</span>
-        <span class="exercises-category-tile-bottom-value">${capitalizeFirstLetter(bodyPart)}</span>
+        <span class="exercises-category-tile-bottom-value">${bodyPart}</span>
       </li>
       <li class="exercises-category-tile-bottom-item">
         <span class="exercises-category-tile-bottom-title">Target:</span>
-        <span class="exercises-category-tile-bottom-value">${capitalizeFirstLetter(target)}</span>
+        <span class="exercises-category-tile-bottom-value">${target}</span>
       </li>
   </ul>
 </li>`;
