@@ -5,7 +5,7 @@
 }
 
 h1 {
-  color: #242424;
+  color: var(--color-dark-gray);
   font-size: 44px;
   font-style: normal;
   font-weight: 400;
@@ -22,6 +22,7 @@ h1 {
   letter-spacing: -0.48px;
 }
 
+/* Filters form */
 .exercises-filters-container {
   display: flex;
   flex-direction: column;
@@ -34,7 +35,7 @@ h1 {
   gap: 10px;
 
   border-radius: 30px;
-  border: 1px solid #242424;
+  border: 1px solid var(--color-dark-gray);
 }
 
 .exercises-filters-form input {
@@ -42,22 +43,40 @@ h1 {
   outline: none;
   background: transparent;
 
-  color: #242424;
-  font-family: 'DM Sans';
-  font-size: 14px;
+  color: var(--color-dark-gray);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-xs);
   line-height: 1.42;
-  padding: 12px 0 12px 14px;
+  padding: var(--indent-2) 0 var(--indent-2) var(--indent-4);
   width: 100%;
 }
 
 .exercises-filters-form input::placeholder {
-  color: #242424;
+  color: var(--color-dark-gray);
 }
 
 .exercises-filters-form button {
   background: transparent;
   border: none;
   cursor: pointer;
+}
+
+@media only screen and (min-width: 768px) {
+  .exercises-filters-container {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 32px;
+  }
+
+  .exercises-filters-form {
+    min-width: 210px;
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  .exercises-filters-container {
+    margin-bottom: 0;
+  }
 }
 
 /* Tabs */
