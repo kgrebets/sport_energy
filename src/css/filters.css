@@ -86,21 +86,23 @@ h1 {
   margin: 0 0 var(--indent-5) 0;
 }
 
-.filter-tabs li {
+.filter-tabs button {
   cursor: pointer;
-  font-size: var(--font-size-xs);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-s);
   line-height: var(--line-height-2xl);
   color: var(--color-dark-gray-60);
   position: relative;
   transition: color 0.3s ease;
   padding-bottom: var(--indent-1);
+  line-height: 1.5;
 }
 
-.filter-tabs li.active {
+.filter-tabs button.active {
   color: var(--color-dark-gray);
 }
 
-.filter-tabs li.active::after {
+.filter-tabs button.active::after {
   content: '';
   position: absolute;
   left: 0;
@@ -156,6 +158,10 @@ h1 {
   line-height: var(--line-height-3xl);
 }
 
+.search-button {
+  padding-right: var(--indent-3);
+}
+
 /* Responsive */
 
 @media only screen and (min-width: 768px) {
@@ -184,6 +190,15 @@ h1 {
   flex-direction: column;
 }
 
+.exercises-subheader {
+  display: inline-block;
+  color: var(--color-dark-gray-50);
+  font-size: var(--font-size-xl);
+  line-height: 1.33;
+  letter-spacing: -0.48px;
+  text-transform: capitalize;
+}
+
 @media only screen and (min-width: 768px) {
   .exercises-header {
     display: flex;
@@ -206,6 +221,5 @@ h1 {
 
   .filter-card {
     max-height: 242px;
-    margin-left: var(--indent-8);
   }
 }

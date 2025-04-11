@@ -1,22 +1,22 @@
 <div class="container">
   <div class="exercises-header">
     <h2>
-      Exercises
+      Exercises<span class="exercises-subheader-container"></span>
     </h2>
     <div class="exercises-filters-container">
       <form class="exercises-filters-form" hidden>
         <input class="frmExserciseSearch" type="text" name="keyword" placeholder="Search">
         <button class="search-button">
-          <svg  width="18" height="18">
+          <svg width="18" height="18">
             <use href="./img/sprite.svg#search"></use>
           </svg>
         </button>
       </form>
-      <ul class="filter-tabs">
-        <li class="active" data-filter="Muscles">Muscles</li>
-        <li data-filter="Body parts">Body parts</li>
-        <li data-filter="Equipment">Equipment</li>
-      </ul>
+      <div class="filter-tabs">
+        <button class="active" data-filter="Muscles">Muscles</button>
+        <button data-filter="Body parts">Body parts</button>
+        <button data-filter="Equipment">Equipment</button>
+      </div>
     </div>
   </div>
   <div class="excercises">
