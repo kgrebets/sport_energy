@@ -74,7 +74,7 @@
   padding: var(--indent-1) var(--indent-3);
 }
 
-@media (min-width: 601px) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .hero {
     margin: 100px 0 var(--indent-16) 0;
   }

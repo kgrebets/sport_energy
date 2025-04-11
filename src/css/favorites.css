@@ -1,0 +1,212 @@
+/* Favorites Page Styles */
+
+.favorites-heading {
+  margin: var(--indent-20) 0 var(--indent-5);
+  font-size: 28px;
+  font-weight: var(--font-weight-regular);
+  line-height: 38px;
+  font-style: normal;
+}
+
+.page-favorites .column-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: stretch;
+  gap: 20px; /* Space between the three sections */
+}
+
+.page-favorites .quote-of-the-day {
+  background-color: var(
+    --color-dark-gray
+  ); /* Very light gray, slightly different from body */
+  padding: var(--indent-5);
+  border-radius: var(--border-radius-m); /* Slightly more rounded corners */
+  margin-bottom: 0;
+  display: flex;
+  gap: 18px;
+}
+
+.page-favorites .quote-of-the-day h2 {
+  font-size: 1.5rem; /* Larger heading */
+  color: var(--color-light-gray); /* Darker heading color */
+  margin-bottom: 10px;
+  font-weight: 600; /* Make heading bold */
+  display: flex;
+  justify-content: space-between;
+}
+
+.page-favorites .quote-of-the-day h2 .quote-icon {
+  width: 1.5rem;
+  position: relative;
+  top: -6px;
+}
+
+.page-favorites .quote-of-the-day p {
+  font-size: 0.9rem;
+  color: var(--color-light-gray);
+  line-height: 1.6;
+  opacity: 0.6;
+}
+
+.page-favorites .quote-of-the-day .author {
+  font-size: 1rem;
+  color: var(--color-light-gray);
+  margin-top: 15px;
+  opacity: 1;
+}
+
+.page-favorites .image-section {
+  border-radius: var(--border-radius-xl);
+  overflow: hidden;
+  background-image: url(./../img/working-out-outdoors.jpg);
+  background-size: cover;
+  background-position: top center;
+  height: 119px;
+  order: 2;
+}
+
+.page-favorites .daily-norm {
+  background-color: var(--color-white);
+  padding: var(--indent-5);
+  border-radius: var(--border-radius-m);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-sizing: border-box;
+  order: 1;
+}
+
+.page-favorites .daily-norm h2 {
+  font-size: var(--font-size-l);
+  line-height: var(--line-height-xs);
+  color: #333;
+  margin-bottom: 6px;
+  font-weight: var(--font-weight-medium);
+}
+
+.page-favorites .daily-norm .sub-title {
+  font-size: 0.875rem;
+  color: var(--color-dark-gray);
+  opacity: 0.6;
+  margin-bottom: 0;
+}
+
+.page-favorites .daily-norm .col > p:not(.sub-title) {
+  display: none;
+}
+
+.page-favorites .icon-col {
+  display: flex;
+}
+
+.page-favorites .sun-icon {
+  --dumbbells-bg: var(--color-white);
+  --dumbbells-icon: var(--color-dark-gray);
+  transform: translateX(-5px);
+}
+
+.page-favorites .running-icon {
+  background-color: #f4f4f433;
+  border-radius: 50%;
+}
+.page-favorites .running-icon use {
+  transform: translate(5px, 5px);
+}
+
+.page-favorites .favorites-list {
+  margin: var(--indent-5) 0 var(--indent-11);
+  display: flex;
+  justify-content: center;
+}
+
+.page-favorites .no-favorites {
+  text-align: center;
+  padding: 0 var(--indent-4);
+}
+
+@media (min-width: 768px) {
+  .favorites-heading {
+    margin: 100px 0 var(--indent-8);
+    font-size: var(--font-size-3xl);
+    line-height: var(--line-height-m);
+  }
+
+  .page-favorites .column-layout {
+    gap: 16px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .page-favorites .quote-of-the-day {
+    flex-basis: 100%;
+    max-width: 100%;
+    padding: var(--indent-10);
+  }
+
+  .page-favorites .quote-of-the-day p,
+  .daily-norm p {
+    font-size: 0.85rem;
+  }
+  .page-favorites .quote-of-the-day {
+    flex-grow: 6;
+  }
+  .page-favorites .daily-norm,
+  .page-favorites .image-section {
+    flex: 1 1 calc(50% - 8px);
+    width: auto;
+    height: 141px;
+  }
+
+  .page-favorites .daily-norm {
+    padding: 25px;
+    margin-bottom: 0;
+  }
+
+  .page-favorites .favorites-list {
+    margin: 132px 0 187px;
+  }
+
+  .page-favorites .no-favorites {
+    padding: 0 var(--indent-19);
+    font-size: var(--font-size-m);
+  }
+}
+
+@media (min-width: 1024px) {
+  .page-favorites .favorites-quote {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    margin-bottom: 63px;
+  }
+
+  .page-favorites .column-layout .favorites-list {
+    width: auto;
+  }
+
+  .page-favorites .column-layout {
+    flex: 1;
+  }
+
+  .page-favorites .favorites-list {
+    flex: 2;
+  }
+
+  /* .quote-of-the-day h2,
+  .daily-norm h2 {
+    font-size: 1.25rem;
+  }
+  .quote-of-the-day,
+  .daily-norm {
+    max-width: 100%;
+    padding: 20px;
+  }
+  .image-section {
+    width: 100%;
+  }
+  .quote-icon {
+    width: 1rem;
+  } */
+}

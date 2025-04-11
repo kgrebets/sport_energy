@@ -1,9 +1,8 @@
-import { initFilters } from "./js/init-filter";
 import { fetchQuote } from "./js/quote";
 import { initFooter } from './js/init-footer';
+import { initFavorites } from "./js/init-favorites";
 
 
-initFilters();
 fetchQuote();
+initFavorites();    
 initFooter();
-
