@@ -22,84 +22,88 @@ h1 {
   letter-spacing: -0.48px;
 }
 
+.exercises-filters-container {
+  display: flex;
+}
+
 /* Tabs */
 .filter-tabs {
-    display: flex;
-    gap: var(--indent-5);
-    margin: 0 0 var(--indent-5) 0;
-  }
+  display: flex;
+  gap: var(--indent-5);
+  margin: 0 0 var(--indent-5) var(--indent-8);
+}
 
-  .filter-tabs li {
-    cursor: pointer;
-    font-size: var(--font-size-xs);
-    line-height: var(--line-height-2xl);
-    color: var(--color-dark-gray-60);
-    position: relative;
-    transition: color 0.3s ease;
-    padding-bottom: var(--indent-1);
-  }
+.filter-tabs li {
+  cursor: pointer;
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-2xl);
+  color: var(--color-dark-gray-60);
+  position: relative;
+  transition: color 0.3s ease;
+  padding-bottom: var(--indent-1);
+}
 
-  .filter-tabs li.active {
-    color: var(--color-dark-gray);
-  }
+.filter-tabs li.active {
+  color: var(--color-dark-gray);
+}
 
-  .filter-tabs li.active::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 100%;
-    height: 4px;
-    background-color: var(--color-dark-gray);
-    border-radius: var(--border-radius-xs);
-  }
+.filter-tabs li.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 4px;
+  background-color: var(--color-dark-gray);
+  border-radius: var(--border-radius-xs);
+}
 
-  /* Cards grid */
-  .filters-output {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--indent-5);
-  }
+/* Cards grid */
+.filters-output {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--indent-5);
+}
 
-  .filter-card {
-    border-radius: var(--border-radius-m);
-    overflow: hidden;
-    position: relative;
-    transition: transform 0.2s ease;
-    max-height: 225px;
-    cursor: pointer;
-  }
+.filter-card {
+  border-radius: var(--border-radius-m);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.2s ease;
+  max-height: 225px;
+  cursor: pointer;
+}
 
-  @media only screen and (hover: hover) {
-    .filter-card:hover {
-      transform: scale(1.03);
-    }
+@media only screen and (hover: hover) {
+  .filter-card:hover {
+    transform: scale(1.03);
   }
-  .filter-info {
-    position: absolute;
-    inset: 0;
-    background: rgba(17, 17, 17, 0.5);
-    color: var(--color-light-gray);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
+}
+.filter-info {
+  position: absolute;
+  inset: 0;
+  background: rgba(17, 17, 17, 0.5);
+  color: var(--color-light-gray);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
-  .filter-name {
-    font-size: var(--font-size-l);
-    line-height: 1;
-    text-transform: capitalize;
-  }
+.filter-name {
+  font-size: var(--font-size-l);
+  line-height: 1;
+  text-transform: capitalize;
+}
 
-  .filter-type {
-    font-size: var(--font-size-xxs);
-    opacity: 0.8;
-    color: var(--color-light-gray-40);
-    line-height: var(--line-height-3xl);
-  }
+.filter-type {
+  font-size: var(--font-size-xxs);
+  opacity: 0.8;
+  color: var(--color-light-gray-40);
+  line-height: var(--line-height-3xl);
+}
 
-  /* Responsive */
+/* Responsive */
 
 @media only screen and (min-width: 768px) {
   .filters-output {

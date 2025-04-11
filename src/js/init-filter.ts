@@ -1,6 +1,6 @@
 import { getFilters } from '../services/filter-service';
 import { generateFiltersHtml, generatePaginationHtml } from '../html-gererators/filter-html-generator';
-import { showErrorMessage } from './utils/toasts';
+import { showErrorMessage, showInfoMessage, showSuccessMessage } from './utils/toasts';
 import { FilterType } from './types/general.types';
 import { exercisesMarkup } from '../html-gererators/exercises-markup';
 import { ExercisesRequest } from './types/request.types';
@@ -13,13 +13,27 @@ export function initFilters(): void {
   const paginationContainer = document.querySelector('.filter-pagination') as HTMLElement;
   const exercisesListContainer = document.querySelector('.exercises-list') as HTMLElement;
   const exercisesPaginationContainer = document.querySelector('.exercises-pagination') as HTMLElement;
+  const exercisesFiltersForm = document.querySelector('.exercises-filters-form') as HTMLFormElement;
 
   if (!filtersOutputContainer) throw new Error('Can\'t find .filters-output');
   if (!tabsContainer) throw new Error('Can\'t find .filter-tabs');
   if (!paginationContainer) throw new Error('Can\'t find .filter-pagination');
+  if (!exercisesFiltersForm) throw new Error('Can\'t find .exercises-filters-form');
 
   let currentFilter = (tabsContainer.querySelector('.active') as HTMLElement)?.dataset.filter as FilterType;
   let currentPage = 1;
+  let currentKeyword = "";
+  let currentFilterKey: string;
+  let currentFilterName: string;
+
+  exercisesFiltersForm.addEventListener('submit', (e: Event) => {
+    e.preventDefault();
+
+    const formData = new FormData(exercisesFiltersForm);
+    currentKeyword = formData.get('keyword') as string;
+
+    loadExercises(currentFilterKey, currentFilterName, currentPage);
+  });
 
   function loadFilters(filter: FilterType, page: number): void {
     const limit = 12;
@@ -30,8 +44,12 @@ export function initFilters(): void {
         paginationContainer.innerHTML = generatePaginationHtml(response.totalPages, page);
         filtersOutputContainer.style.display = 'flex';
         paginationContainer.style.display = 'flex';
+
         exercisesListContainer.style.display = 'none';
         exercisesPaginationContainer.style.display = 'none';
+        exercisesFiltersForm.hidden = true;
+        exercisesFiltersForm.reset();
+        currentKeyword = "";
 
         attachFilterCardClickHandlers();
       })
@@ -53,7 +71,7 @@ export function initFilters(): void {
       [filterKey]: filterValue,
       page,
       limit,
-      keyword: '',
+      keyword: currentKeyword,
     };
 
     try {
@@ -76,10 +94,19 @@ export function initFilters(): void {
         response.page,
       );
 
+      exercisesFiltersForm.hidden = false;
       exercisesListContainer.style.display = 'flex';
       exercisesPaginationContainer.style.display = 'flex';
 
       attachExercisesPaginationHandlers(filterKey, filterValue);
+
+      if (response.results.length === 0) {
+        showInfoMessage({
+          title: "",
+          message: " No excersies found",
+          position: 'topRight'
+        });
+      }
     } catch (error: any) {
       showErrorMessage({
         title: 'Error',
@@ -93,8 +120,8 @@ export function initFilters(): void {
     const filterCards = filtersOutputContainer!.querySelectorAll('.filter-card');
     filterCards.forEach(card => {
       card.addEventListener('click', () => {
-        const filterType = card.getAttribute('data-filter-type');
-        const filterName = card.getAttribute('data-filter-name');
+        const filterType = card.getAttribute('data-filter-type') as string;
+        const filterName = card.getAttribute('data-filter-name') as string;
         if (!filterType || !filterName) return;
         currentPage = 1;
 
@@ -116,7 +143,10 @@ export function initFilters(): void {
           paginationContainer.style.display = 'none';
         }
 
-        loadExercises(key, filterName.toLowerCase(), currentPage);
+        currentFilterKey = key;
+        currentFilterName = filterName.toLowerCase();
+
+        loadExercises(key, currentFilterName, currentPage);
       });
     });
   }
