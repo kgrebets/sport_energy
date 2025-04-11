@@ -114,7 +114,7 @@
   }
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 1024px) {
   .hero {
     margin: 96px 0 var(--indent-16);
     display: flex;

@@ -1,28 +1,27 @@
 import { Exercise } from "./types/general.types";
+import { renderExerciseCard } from "./services/rendering";
+import { renderFavorites } from "./services/rendering";
 
+export function initFavorites(): void {
+  const favoritesOutputContainer = document.querySelector('.exercises-content') as HTMLElement;
 
-export function initFavorites() {
-    const favoritesOutputContainer = document.querySelector('.favorites-list');
+  function loadFavorites(): Exercise[] {
+    try {
+      const favoritesData = JSON.parse(localStorage.getItem('favorites') || '[]') as Exercise[];
+      return favoritesData;
 
-    function loadFavorites(): Exercise[] {
-        const favoritesData = JSON.parse(localStorage.getItem('favorites') || '[]') as Exercise[];
-        return favoritesData;
+    } catch (error) {
+      return [];
     }
+  }
 
-    
-
-    function renderFavorites(favoritesData: Exercise[]) {
-        if (!favoritesOutputContainer) return;
-        if (favoritesData.length === 0) {
-            return favoritesOutputContainer.insertAdjacentHTML(
-                'beforeend',
-                `<p class="no-favorites">
-                   It appears that you haven't added any exercises to your favorites yet.
-                   To get started, you can add exercises that you like to your favorites for easier access in the future.
-                 </p>`
-              );              
-        };
-    }
-
-    renderFavorites(loadFavorites());
+  renderFavorites(loadFavorites(), favoritesOutputContainer);
 }
+
+const trashButtons = document.querySelectorAll<HTMLButtonElement>('.exercises-category-tile-button-delete');
+function trashButtons.forEach(button => {
+button.addEventListener('click', () => {
+    const id = button.dataset.id;
+    if (!id) return;
+  });
+});
