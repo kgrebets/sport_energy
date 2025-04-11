@@ -7,7 +7,7 @@ import { ExercisesRequest } from './types/request.types';
 import { ExercisesResponse } from './types/response.types';
 import { getExercises } from '../services/ exercises-service';
 
-export function initFilters() {
+export function initFilters(): void {
   const filtersOutputContainer = document.querySelector('.filters-output');
   const tabsContainer = document.querySelector('.filter-tabs');
   const paginationContainer = document.querySelector('.filter-pagination');
@@ -21,7 +21,7 @@ export function initFilters() {
   let currentFilter = (tabsContainer.querySelector('.active') as HTMLElement)?.dataset.filter as FilterType;
   let currentPage = 1;
 
-  function loadFilters(filter: FilterType, page: number) {
+  function loadFilters(filter: FilterType, page: number): void {
     const limit = 12;
 
     getFilters({ filter, page, limit })
@@ -46,7 +46,7 @@ export function initFilters() {
     filterKey: string,
     filterValue: string,
     page: number,
-  ) {
+  ): Promise<void> {
     if (!exercisesListContainer || !exercisesPaginationContainer) return;
     const limit = 10;
     const requestParams: Partial<ExercisesRequest> = {
@@ -89,7 +89,7 @@ export function initFilters() {
     }
   }
 
-  function attachFilterCardClickHandlers() {
+  function attachFilterCardClickHandlers(): void {
     const filterCards =
       filtersOutputContainer!.querySelectorAll('.filter-card');
     filterCards.forEach(card => {
@@ -125,7 +125,7 @@ export function initFilters() {
   function attachExercisesPaginationHandlers(
     filterKey: string,
     filterValue: string
-  ) {
+  ): void {
     const paginationPages =
       exercisesPaginationContainer!.querySelectorAll('.pagination-page');
     paginationPages.forEach(pageEl => {
