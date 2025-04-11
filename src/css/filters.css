@@ -156,6 +156,10 @@ h1 {
   line-height: var(--line-height-3xl);
 }
 
+.search-button {
+  padding-right: var(--indent-3);
+}
+
 /* Responsive */
 
 @media only screen and (min-width: 768px) {
@@ -206,6 +210,5 @@ h1 {
 
   .filter-card {
     max-height: 242px;
-    margin-left: var(--indent-8);
   }
 }
