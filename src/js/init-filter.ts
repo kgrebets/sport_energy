@@ -8,11 +8,11 @@ import { ExercisesResponse } from './types/response.types';
 import { getExercises } from '../services/ exercises-service';
 
 export function initFilters(): void {
-  const filtersOutputContainer = document.querySelector('.filters-output');
-  const tabsContainer = document.querySelector('.filter-tabs');
-  const paginationContainer = document.querySelector('.filter-pagination');
-  const exercisesListContainer = document.querySelector('.exercises-list');
-  const exercisesPaginationContainer = document.querySelector('.exercises-pagination');
+  const filtersOutputContainer = document.querySelector('.filters-output') as HTMLElement;
+  const tabsContainer = document.querySelector('.filter-tabs') as HTMLElement;
+  const paginationContainer = document.querySelector('.filter-pagination') as HTMLElement;
+  const exercisesListContainer = document.querySelector('.exercises-list') as HTMLElement;
+  const exercisesPaginationContainer = document.querySelector('.exercises-pagination') as HTMLElement;
 
   if (!filtersOutputContainer) throw new Error('Can\'t find .filters-output');
   if (!tabsContainer) throw new Error('Can\'t find .filter-tabs');
@@ -26,8 +26,8 @@ export function initFilters(): void {
 
     getFilters({ filter, page, limit })
       .then(response => {
-        filtersOutputContainer!.innerHTML = generateFiltersHtml(response.results);
-        paginationContainer!.innerHTML = generatePaginationHtml(response.totalPages, page);
+        filtersOutputContainer.innerHTML = generateFiltersHtml(response.results);
+        paginationContainer.innerHTML = generatePaginationHtml(response.totalPages, page);
         filtersOutputContainer.style.display = 'flex';
         paginationContainer.style.display = 'flex';
         exercisesListContainer.style.display = 'none';
@@ -90,8 +90,7 @@ export function initFilters(): void {
   }
 
   function attachFilterCardClickHandlers(): void {
-    const filterCards =
-      filtersOutputContainer!.querySelectorAll('.filter-card');
+    const filterCards = filtersOutputContainer!.querySelectorAll('.filter-card');
     filterCards.forEach(card => {
       card.addEventListener('click', () => {
         const filterType = card.getAttribute('data-filter-type');
