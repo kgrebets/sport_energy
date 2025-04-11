@@ -1,0 +1,182 @@
+.excercises {
+  display: flex;
+  flex-direction: column-reverse;
+  margin-bottom: var(--indent-20);
+}
+
+.column-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: stretch;
+  gap: 20px;
+}
+
+.quote-of-the-day {
+  background-color: var(--color-dark-gray);; /* Very light gray, slightly different from body */
+  padding: 40px;
+  border-radius: var(--border-radius-m); /* Slightly more rounded corners */
+  margin-bottom: 0;
+  display: flex;
+  gap: 18px;
+  box-sizing: border-box;
+}
+
+.quote-of-the-day h2 {
+  font-size: 1.5rem; /* Larger heading */
+  color: var( --color-light-gray); /* Darker heading color */
+  margin-bottom: 10px;
+  font-weight: 600; /* Make heading bold */
+  display: flex;
+  justify-content: space-between;
+}
+
+.quote-of-the-day h2 .quote-icon {
+  width: 1.5rem;
+  position: relative;
+  top: -6px;
+}
+
+.quote-of-the-day p {
+  font-size: 0.9rem;
+  color: var( --color-light-gray);
+  line-height: 1.6;
+  opacity: .6;
+}
+
+.quote-of-the-day .author {
+  font-size: 1rem;
+  color: var( --color-light-gray);
+  margin-top: 15px;
+  opacity: 1;
+}
+
+.image-section {
+  border-radius: var(--border-radius-m);
+  overflow: hidden;
+  background-image: url(./../img/2-girls-walking.jpg);
+  background-size: cover;
+  background-position: top center;
+  flex-grow: 1;
+  height: 242px;
+}
+
+
+.daily-norm {
+  background-color: var(--color-white);
+  padding: 40px;
+  border-radius: var(--border-radius-m);
+  display: flex;
+  gap: 20px;
+  box-sizing: border-box;
+}
+
+.daily-norm h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 0px;
+  font-weight: 600;
+}
+
+.daily-norm .sub-title {
+  font-size: .875rem;
+  color: var(--color-dark-gray);
+  opacity: .6;
+  margin-bottom: 16px;
+}
+.daily-norm p {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.icon-col {
+  display: flex;
+  position: relative;
+}
+
+.icon-col .sun-icon {
+  color: var(--color-white);
+}
+
+.col {
+  position: relative;
+}
+
+.running-icon {
+  background-color: #F4F4F433;
+  border-radius: 50%;
+  color: var(--color-white);
+}
+.running-icon use {
+  transform: translate(5px, 5px);
+}
+
+@media (max-width: 1024px) {
+  .column-layout {
+    gap: 16px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .quote-of-the-day p,
+  .daily-norm p {
+    font-size: 0.85rem;
+  }
+  .quote-of-the-day {
+    flex-grow: 6;
+    max-width: 488px;
+  }
+  .image-section {
+    flex-grow: 4;
+  }
+  .daily-norm {
+    flex: 1 0 100%;
+  }
+
+  .excercises {
+    /*flex-direction: column;*/
+  }
+}
+
+@media (max-width: 768px) {
+  .quote-of-the-day h2,
+  .daily-norm h2 {
+    font-size: 1.25rem;
+  }
+  .quote-of-the-day, .daily-norm {
+    max-width: 100%;
+    padding: 20px;
+  }
+  .image-section {
+    width: 100%;
+  }
+  .quote-icon {
+    width: 1rem;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .column-layout {
+    row-gap: var(--indent-8);
+    column-gap: var(--indent-4);
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  .excercises {
+    gap: var(--indent-8);
+    flex-direction: row;
+    margin-bottom: var(--indent-10);
+  }
+
+  .column-layout {
+    max-width: 444px;
+    min-width: 335px;
+    gap: 32px;
+  }
+
+  .main-content {
+    max-width: 900px;
+  }
+}

@@ -2,13 +2,13 @@ import { FilterResponse } from "../js/types/response.types";
 
 export function generateFiltersHtml(items: FilterResponse[]) {
   return items.map(item => `
-          <div class="filter-card">
+          <li class="filter-card" data-filter-type="${item.filter}" data-filter-name="${item.name}">
             <img src="${item.imgURL}" alt="${item.name}" />
             <div class="filter-info">
               <div class="filter-name">${item.name}</div>
               <div class="filter-type">${item.filter}</div>
             </div>
-          </div>
+          </li>
         `)
     .join('');
 }
@@ -29,6 +29,6 @@ export function generatePaginationHtml(totalPages: number, currentPage: number):
   }
 
   return pagesToShow.map(page => `
-    <span class="pagination-page${page === currentPage ? ' active' : ''}" data-page="${page}">${page}</span>
+    <li class="pagination-page${page === currentPage ? ' active' : ''}" data-page="${page}">${page}</li>
   `).join('');
 }

@@ -15,7 +15,7 @@ import {showErrorMessage} from "../utils/toasts";
  *
  * @returns {Promise<K>} A promise that resolves to the data retrieved from the API response.
  */
-export const makeGetRequest = async <T, K>(endpoint: string, requestData: Partial<T>): Promise<K | undefined> => {
+export const makeGetRequest = async <T, K>(endpoint: string, requestData?: Partial<T>): Promise<K | undefined> => {
   try {
     const { data } = await axios.get<K>(`${YOUR_ENERGY_API_URL}${endpoint}`, {
       params: requestData
