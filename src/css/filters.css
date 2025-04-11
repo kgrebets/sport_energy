@@ -188,6 +188,15 @@ h1 {
   flex-direction: column;
 }
 
+.exercises-subheader {
+  display: inline-block;
+  color: var(--color-dark-gray-50);
+  font-size: var(--font-size-xl);
+  line-height: 1.33;
+  letter-spacing: -0.48px;
+  text-transform: capitalize;
+}
+
 @media only screen and (min-width: 768px) {
   .exercises-header {
     display: flex;
