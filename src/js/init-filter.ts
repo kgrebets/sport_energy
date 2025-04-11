@@ -1,6 +1,6 @@
 import { getFilters } from '../services/filter-service';
 import { generateFiltersHtml, generatePaginationHtml } from '../html-gererators/filter-html-generator';
-import { showErrorMessage, showInfoMessage, showSuccessMessage } from './utils/toasts';
+import { showErrorMessage, showInfoMessage } from './utils/toasts';
 import { FilterType } from './types/general.types';
 import { exercisesMarkup } from '../html-gererators/exercises-markup';
 import { ExercisesRequest } from './types/request.types';
@@ -14,11 +14,13 @@ export function initFilters(): void {
   const exercisesListContainer = document.querySelector('.exercises-list') as HTMLElement;
   const exercisesPaginationContainer = document.querySelector('.exercises-pagination') as HTMLElement;
   const exercisesFiltersForm = document.querySelector('.exercises-filters-form') as HTMLFormElement;
+  const subHeaderContainer = document.querySelector('.exercises-subheader-container') as HTMLElement;
 
   if (!filtersOutputContainer) throw new Error('Can\'t find .filters-output');
   if (!tabsContainer) throw new Error('Can\'t find .filter-tabs');
   if (!paginationContainer) throw new Error('Can\'t find .filter-pagination');
   if (!exercisesFiltersForm) throw new Error('Can\'t find .exercises-filters-form');
+  if (!subHeaderContainer) throw new Error('Can\'t find .exercises-subheader-container');
 
   let currentFilter = (tabsContainer.querySelector('.active') as HTMLElement)?.dataset.filter as FilterType;
   let currentPage = 1;
@@ -44,6 +46,7 @@ export function initFilters(): void {
         paginationContainer.innerHTML = generatePaginationHtml(response.totalPages, page);
         filtersOutputContainer.style.display = 'flex';
         paginationContainer.style.display = 'flex';
+        setExercisesSubheader(null);
 
         exercisesListContainer.style.display = 'none';
         exercisesPaginationContainer.style.display = 'none';
@@ -73,7 +76,6 @@ export function initFilters(): void {
       limit,
       keyword: currentKeyword,
     };
-
     try {
       const response: ExercisesResponse = await getExercises(requestParams);
       const markup = response.results
@@ -143,12 +145,20 @@ export function initFilters(): void {
           paginationContainer.style.display = 'none';
         }
 
+        setExercisesSubheader(filterName);
+
         currentFilterKey = key;
         currentFilterName = filterName.toLowerCase();
 
         loadExercises(key, currentFilterName, currentPage);
       });
     });
+  }
+
+  function setExercisesSubheader(subheader: string | null) {
+    subHeaderContainer.innerHTML = subheader
+      ? ` / <span class="exercises-subheader">${subheader}</span>`
+      : "";
   }
 
   function attachExercisesPaginationHandlers(
