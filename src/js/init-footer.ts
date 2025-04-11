@@ -16,7 +16,7 @@ export function initFooter() {
 
   form.addEventListener('submit', handleSubscriptionSubmit);
 
-  async function handleSubscriptionSubmit(event: Event) {
+  async function handleSubscriptionSubmit(event: Event): Promise<void> {
     event.preventDefault();
 
     const formData = new FormData(form);

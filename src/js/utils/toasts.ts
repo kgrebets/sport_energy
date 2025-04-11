@@ -30,3 +30,14 @@ export const showSuccessMessage = (
     ...otherOptions,
   });
 };
+
+export const showInfoMessage = (
+  { title, message, position, ...otherOptions }
+) => {
+  iziToast.info({
+    title: title,
+    message: message,
+    position: position,
+    ...otherOptions,
+  });
+};

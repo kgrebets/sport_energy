@@ -10,7 +10,7 @@
 }
 
 .hero-heading {
-  font-size: var(--font-size-2xl);
+  font-size: var(--font-size-3xl);
   line-height: var(--line-height-l);
   font-weight: var(--font-weight-regular);
   font-style: normal;

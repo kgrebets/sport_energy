@@ -1,0 +1,120 @@
+.exercises-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--indent-5);
+}
+
+.exercises-category-tile-item {
+  background-color: var(--color-white);
+  border-radius: var(--border-radius-l);
+  padding: var(--indent-4);
+  width: 100%;
+}
+
+.exercises-category-tile-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.exercises-category-tile-workout-wrapper {
+  display: flex;
+  gap: var(--indent-4);
+}
+
+.exercises-category-tile-button {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.exercises-category-tile-rating-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.exercises-category-tile-rating {
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.exercises-category-tile-badge {
+  border: 1px solid var(--color-dark-gray);
+  border-radius: var(--border-radius-l);
+  width: 76px;
+  height: 26px;
+  font-size: 12px;
+  line-height: 12px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.exercises-category-tile-star-icon {
+  color: var(--color-accent-yellow);
+}
+
+.exercises-category-tile-middle {
+  display: flex;
+  align-items: center;
+  margin-top: var(--indent-6);
+  margin-bottom: var(--indent-4);
+  gap: var(--indent-4);
+}
+
+.exercises-category-tile-man-icon-container {
+  background-color: var(--color-dark-gray);
+  border-radius: var(--border-radius-full);
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exercises-category-tile-man-icon {
+  color: var(--color-white);
+}
+
+.exercises-category-tile-bottom,
+.exercises-category-tile-bottom-item {
+  display: flex;
+}
+
+.exercises-category-tile-bottom {
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--indent-1);
+}
+
+.exercises-category-tile-bottom-item {
+  font-size: 12px;
+  line-height: 18px;
+  gap: var(--indent-1);
+  white-space: nowrap;
+}
+
+.exercises-category-tile-bottom-title {
+  color: #24242466;
+}
+
+.exercises-category-tile-bottom-value {
+  max-width: 40px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: inline-block;
+  flex: 1 1 0;
+  text-transform: capitalize;
+}
+
+@media only screen and (min-width: 768px) {
+  .exercises-list {
+    gap: var(--indent-4);
+  }
+
+  .exercises-category-tile-item {
+    width: calc((100% - 1 * var(--indent-4)) / 2);
+  }
+}
