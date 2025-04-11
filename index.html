@@ -14,7 +14,7 @@
     <script type="module" crossorigin src="/sport_energy/index.js"></script>
     <link rel="modulepreload" crossorigin href="/sport_energy/assets/vendor-BAoYjrW1.js">
     <link rel="stylesheet" crossorigin href="/sport_energy/assets/vendor-D_nxXpU-.css">
-    <link rel="stylesheet" crossorigin href="/sport_energy/assets/styles-Z1Ix36v0.css">
+    <link rel="stylesheet" crossorigin href="/sport_energy/assets/styles-CQSkmnu0.css">
   </head>
   <body>
     <header class="header">
@@ -83,11 +83,16 @@
     <h2>
       Exercises
     </h2>
-    <ul class="filter-tabs">
-      <li class="active" data-filter="Muscles">Muscles</li>
-      <li data-filter="Body parts">Body parts</li>
-      <li data-filter="Equipment">Equipment</li>
-    </ul>
+    <div class="exercises-filters-container">
+      <form class="exercises-filters-form" hidden>
+        <input class="frmExserciseSearch" type="text" name="keyword" placeholder="Search">
+      </form>
+      <ul class="filter-tabs">
+        <li class="active" data-filter="Muscles">Muscles</li>
+        <li data-filter="Body parts">Body parts</li>
+        <li data-filter="Equipment">Equipment</li>
+      </ul>
+    </div>
   </div>
   <div class="excercises">
     <div class="quote-content">
