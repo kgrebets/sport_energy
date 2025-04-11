@@ -1,8 +1,7 @@
 .excercises {
   display: flex;
-  /* flex-direction: column; Stack items vertically by default */
-  align-items: stretch; /* Stretch items to container width */
-  gap: 20px; /* Add some gap between the quote and main content */
+  flex-direction: column-reverse;
+  margin-bottom: var(--indent-20);
 }
 
 .column-layout {
@@ -10,8 +9,7 @@
   flex-direction: column;
   align-items: stretch;
   justify-content: stretch;
-  gap: 20px; /* Space between the three sections */
-  /* width: 444px; */
+  gap: 20px;
 }
 
 .quote-of-the-day {
@@ -113,7 +111,7 @@
   .column-layout {
     gap: 16px;
     flex-direction: row;
-    flex-wrap: wrap;  
+    flex-wrap: wrap;
     width: 100%;
   }
   .quote-of-the-day p,
@@ -130,9 +128,9 @@
   .daily-norm {
     flex: 1 0 100%;
   }
-  
+
   .excercises {
-    flex-direction: column;
+    /*flex-direction: column;*/
   }
 }
 
@@ -150,5 +148,30 @@
   }
   .quote-icon {
     width: 1rem;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .column-layout {
+    row-gap: var(--indent-8);
+    column-gap: var(--indent-4);
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  .excercises {
+    gap: var(--indent-8);
+    flex-direction: row;
+    margin-bottom: var(--indent-10);
+  }
+
+  .column-layout {
+    max-width: 444px;
+    min-width: 335px;
+    gap: 32px;
+  }
+
+  .main-content {
+    max-width: 900px;
   }
 }
