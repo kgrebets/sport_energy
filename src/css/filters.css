@@ -24,13 +24,47 @@ h1 {
 
 .exercises-filters-container {
   display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.exercises-filters-form {
+  display: flex;
+  padding: 0;
+  gap: 10px;
+
+  border-radius: 30px;
+  border: 1px solid #242424;
+}
+
+.exercises-filters-form input {
+  border: none;
+  outline: none;
+  background: transparent;
+
+  color: #242424;
+  font-family: 'DM Sans';
+  font-size: 14px;
+  line-height: 1.42;
+  padding: 12px 0 12px 14px;
+  width: 100%;
+}
+
+.exercises-filters-form input::placeholder {
+  color: #242424;
+}
+
+.exercises-filters-form button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 /* Tabs */
 .filter-tabs {
   display: flex;
   gap: var(--indent-5);
-  margin: 0 0 var(--indent-5) var(--indent-8);
+  margin: 0 0 var(--indent-5) 0;
 }
 
 .filter-tabs li {
@@ -153,5 +187,6 @@ h1 {
 
   .filter-card {
     max-height: 242px;
+    margin-left: var(--indent-8);
   }
 }
