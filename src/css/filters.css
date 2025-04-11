@@ -86,21 +86,23 @@ h1 {
   margin: 0 0 var(--indent-5) 0;
 }
 
-.filter-tabs li {
+.filter-tabs button {
   cursor: pointer;
-  font-size: var(--font-size-xs);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-s);
   line-height: var(--line-height-2xl);
   color: var(--color-dark-gray-60);
   position: relative;
   transition: color 0.3s ease;
   padding-bottom: var(--indent-1);
+  line-height: 1.5;
 }
 
-.filter-tabs li.active {
+.filter-tabs button.active {
   color: var(--color-dark-gray);
 }
 
-.filter-tabs li.active::after {
+.filter-tabs button.active::after {
   content: '';
   position: absolute;
   left: 0;
