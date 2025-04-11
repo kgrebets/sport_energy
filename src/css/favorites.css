@@ -1,0 +1,407 @@
+/* Favorites Page Styles */
+
+.favorites-heading {
+  margin: var(--indent-15) 0 var(--indent-5);
+  font-size: 28px;
+  font-weight: var(--font-weight-regular);
+  line-height: 38px;
+  font-style: normal;
+}
+
+.page-favorites .column-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: stretch;
+  gap: 20px;
+}
+
+.page-favorites .quote-of-the-day {
+  background-color: var(--color-dark-gray);
+  padding: var(--indent-5);
+  border-radius: var(--border-radius-m);
+  margin-bottom: 0;
+  display: flex;
+  gap: 18px;
+}
+
+.page-favorites .quote-of-the-day h2 {
+  font-size: 1.5rem;
+  color: var(--color-light-gray);
+  margin-bottom: 10px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+}
+
+.page-favorites .quote-of-the-day h2 .quote-icon {
+  width: 1.5rem;
+  position: relative;
+  top: -6px;
+}
+
+.page-favorites .quote-of-the-day p {
+  font-size: 0.9rem;
+  color: var(--color-light-gray);
+  line-height: 1.6;
+  opacity: 0.6;
+}
+
+.page-favorites .quote-of-the-day .author {
+  font-size: 1rem;
+  color: var(--color-light-gray);
+  margin-top: 15px;
+  opacity: 1;
+}
+
+.page-favorites .image-section {
+  border-radius: var(--border-radius-xl);
+  overflow: hidden;
+  background-image: url(./../img/working-out-outdoors.jpg);
+  background-size: cover;
+  background-position: top center;
+  height: 119px;
+  order: 2;
+}
+
+.page-favorites .daily-norm {
+  background-color: var(--color-white);
+  padding: var(--indent-5);
+  border-radius: var(--border-radius-m);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-sizing: border-box;
+  order: 1;
+}
+
+.page-favorites .daily-norm h2 {
+  font-size: var(--font-size-l);
+  line-height: var(--line-height-xs);
+  color: #333;
+  margin-bottom: 6px;
+  font-weight: var(--font-weight-medium);
+}
+
+.page-favorites .daily-norm .sub-title {
+  font-size: 0.875rem;
+  color: var(--color-dark-gray);
+  opacity: 0.6;
+  margin-bottom: 0;
+}
+
+.page-favorites .daily-norm .col > p:not(.sub-title) {
+  display: none;
+}
+
+.page-favorites .icon-col {
+  display: flex;
+}
+
+.page-favorites .sun-icon {
+  color: var(--color-white);
+  fill: var(--color-dark-gray);
+  transform: translateX(-5px);
+}
+
+.page-favorites .running-icon {
+  background-color: #f4f4f433;
+  border-radius: 50%;
+}
+.page-favorites .running-icon use {
+  transform: translate(5px, 5px);
+}
+
+.page-favorites .favorites-list {
+  display: flex;
+  justify-content: center;
+}
+
+.page-favorites .no-favorites {
+  margin: var(--indent-5) 0 var(--indent-11);
+  text-align: center;
+  padding: 0 var(--indent-4);
+}
+
+@media (min-width: 768px) {
+  .favorites-heading {
+    margin: 72px 0 var(--indent-8);
+    font-size: var(--font-size-3xl);
+    line-height: var(--line-height-m);
+  }
+
+  .page-favorites .column-layout {
+    gap: 16px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .page-favorites .quote-of-the-day {
+    flex-basis: 100%;
+    max-width: 100%;
+    padding: var(--indent-10);
+  }
+
+  .page-favorites .quote-of-the-day p,
+  .daily-norm p {
+    font-size: 0.85rem;
+  }
+  .page-favorites .quote-of-the-day {
+    flex-grow: 6;
+  }
+  .page-favorites .daily-norm,
+  .page-favorites .image-section {
+    flex: 1 1 calc(50% - 8px);
+    width: auto;
+    height: 141px;
+  }
+
+  .page-favorites .daily-norm {
+    margin-bottom: 0;
+  }
+
+  .page-favorites .no-favorites {
+    margin: 132px 0 187px;
+    padding: 0 var(--indent-19);
+    font-size: var(--font-size-m);
+  }
+}
+
+@media (min-width: 1024px) {
+  .favorites-heading {
+    margin: 62px 0 var(--indent-8);
+  }
+
+  .page-favorites .favorites-quote {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    margin-bottom: 63px;
+  }
+
+  .page-favorites .quote-of-the-day {
+    padding: var(--indent-10);
+  }
+
+  .page-favorites .column-layout .favorites-list {
+    width: auto;
+  }
+}
+
+/* Exercises Section Styles */
+
+.page-favorites .exercises-content {
+  margin-top: var(--indent-5);
+}
+
+.page-favorites .exercises-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--indent-5);
+}
+
+.page-favorites .exercises-category-tile-item {
+  background-color: var(--color-white);
+  border-radius: var(--border-radius-l);
+  padding: var(--indent-4);
+  width: 100%;
+}
+
+.page-favorites .exercises-category-tile-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.page-favorites .exercises-category-tile-top-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--indent-2);
+}
+
+.page-favorites .exercises-category-tile-workout-wrapper {
+  display: flex;
+  gap: var(--indent-4);
+}
+
+.page-favorites .exercises-category-tile-button {
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--color-white);
+}
+
+.page-favorites .exercises-category-tile-button-delete {
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--color-white);
+}
+
+.page-favorites .exercises-category-tile-rating-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.page-favorites .exercises-category-tile-rating {
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.page-favorites .exercises-category-tile-badge {
+  border: 1px solid var(--color-dark-gray);
+  border-radius: var(--border-radius-l);
+  width: 76px;
+  height: 26px;
+  font-size: 12px;
+  line-height: 12px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-favorites .exercises-category-tile-star-icon {
+  color: var(--color-accent-yellow);
+}
+
+.page-favorites .exercises-category-tile-middle {
+  display: flex;
+  align-items: center;
+  margin-top: var(--indent-6);
+  margin-bottom: var(--indent-4);
+  gap: var(--indent-4);
+}
+
+.page-favorites .exercises-category-tile-man-icon-container {
+  background-color: var(--color-dark-gray);
+  border-radius: var(--border-radius-full);
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-favorites .exercises-category-tile-man-icon {
+  color: var(--color-white);
+  transform: translate(3px, 3px);
+}
+
+.page-favorites .exercises-category-tile-bottom,
+.page-favorites .exercises-category-tile-bottom-item {
+  display: flex;
+}
+
+.page-favorites .exercises-category-tile-bottom {
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--indent-1);
+}
+
+.page-favorites .exercises-category-tile-bottom-item {
+  font-size: 12px;
+  line-height: 18px;
+  gap: var(--indent-1);
+  white-space: nowrap;
+}
+
+.page-favorites .exercises-category-tile-bottom-title {
+  color: #24242466;
+}
+
+.page-favorites .exercises-category-tile-bottom-value {
+  max-width: 40px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: inline-block;
+  flex: 1 1 0;
+  text-transform: capitalize;
+}
+
+.page-favorites .exercises-category-tile-bottom-value > span {
+  color: var(--color-dark-gray);
+}
+
+.page-favorites .pagination {
+  gap: var(--indent-2);
+}
+
+.page-favorites .pagination-btn {
+  width: 14px;
+  height: 32px;
+  font-size: 24px;
+  font-weight: var(--font-weight-regular);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--color-light-gray-secondary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+.page-favorites .pagination-btn.active {
+  width: 32px;
+  border: 1px solid var(--color-dark-gray);
+  border-radius: 18px;
+  color: var(--color-dark-gray);
+  padding: 0 5px;
+  text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .page-favorites .exercises-content {
+    margin-top: var(--indent-5);
+    margin-bottom: var(--indent-8);
+  }
+  .page-favorites .exercises-list {
+    gap: var(--indent-4);
+  }
+
+  .page-favorites .exercises-category-tile-item {
+    width: calc((100% - 1 * var(--indent-4)) / 2);
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .page-favorites .exercises-content {
+    margin-top: 0;
+  }
+  .page-favorites .favorites-content {
+    display: flex;
+    gap: 32px;
+  }
+
+  .page-favorites .favorites-quote {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+  }
+
+  .page-favorites .favorites-list {
+    flex: 2;
+  }
+
+  .page-favorites .quote-of-the-day h2 {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: 0;
+  }
+
+  .page-favorites .quote-of-the-day .quote-text {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-regular);
+    letter-spacing: 0;
+  }
+
+  .page-favorites .quote-of-the-day .author {
+    font-size: var(--font-size-s);
+    font-weight: var(--font-weight-regular);
+    letter-spacing: 0;
+    line-height: var(--line-height-3xl);
+  }
+}
