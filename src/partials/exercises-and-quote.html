@@ -1,10 +1,26 @@
 <div class="container">
+  <div class="exercises-header">
+    <h2>
+      Exercises
+    </h2>
+    <ul class="filter-tabs">
+      <li class="active" data-filter="Muscles">Muscles</li>
+      <li data-filter="Body parts">Body parts</li>
+      <li data-filter="Equipment">Equipment</li>
+    </ul>
+  </div>
   <div class="excercises">
     <div class="quote-content">
       <load src="partials/quote.html" />
     </div>
     <div class="main-content">
-      <load src="partials/exercises.html" />
+      <ul class="filters-output"></ul>
+      <ul class="filter-pagination pagination"></ul>
+
+      <div class="exercises-content">
+        <ul class="exercises-list"></ul>
+        <div class="pagination exercises-pagination"></div>
+      </div>
     </div>
   </div>
 </div>
