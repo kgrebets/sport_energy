@@ -15,5 +15,31 @@ export function initFavorites(): void {
     }
   }
 
-  renderFavorites(loadFavorites(), favoritesOutputContainer);
+  function deleteFavorite(id: string): void {
+    const storedFavorites = JSON.parse(localStorage.getItem('favorites') || '[]') as Exercise[];
+    const updatedFavorites = storedFavorites.filter(exercise => exercise._id !== id);
+    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+    renderFavorites(updatedFavorites, favoritesOutputContainer);
+    attachDeleteListeners();
+  }
+
+  function attachDeleteListeners(): void {
+    const trashButtons = favoritesOutputContainer.querySelectorAll<HTMLButtonElement>(
+      '.exercises-category-tile-button-delete'
+    );
+
+    trashButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const id = button.dataset.id;
+        if (!id) return;
+        deleteFavorite(id);
+      });
+    });
+  }
+
+//   Show list of favorites exercises
+
+renderFavorites(loadFavorites(), favoritesOutputContainer);
+attachDeleteListeners();
 }
+

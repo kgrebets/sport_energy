@@ -88,6 +88,6 @@ export function renderFavorites(data: Exercise[], container: HTMLElement): void 
     }
   
     container.appendChild(paginationContainer);
-  }
 
-  
+    const trashButtons = container.querySelectorAll<HTMLButtonElement>('.exercises-category-tile-button');
+}
