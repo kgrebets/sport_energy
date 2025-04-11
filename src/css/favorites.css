@@ -101,8 +101,8 @@
 }
 
 .page-favorites .sun-icon {
-  --dumbbells-bg: var(--color-white);
-  --dumbbells-icon: var(--color-dark-gray);
+  color: var(--color-white);
+  fill: var(--color-dark-gray);
   transform: translateX(-5px);
 }
 
