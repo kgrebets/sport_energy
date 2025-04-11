@@ -17,11 +17,3 @@ export function initFavorites(): void {
 
   renderFavorites(loadFavorites(), favoritesOutputContainer);
 }
-
-const trashButtons = document.querySelectorAll<HTMLButtonElement>('.exercises-category-tile-button-delete');
-function trashButtons.forEach(button => {
-button.addEventListener('click', () => {
-    const id = button.dataset.id;
-    if (!id) return;
-  });
-});

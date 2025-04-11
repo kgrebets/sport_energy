@@ -1,7 +1,7 @@
 /* Favorites Page Styles */
 
 .favorites-heading {
-  margin: var(--indent-20) 0 var(--indent-5);
+  margin: var(--indent-15) 0 var(--indent-5);
   font-size: 28px;
   font-weight: var(--font-weight-regular);
   line-height: 38px;
@@ -125,7 +125,7 @@
 
 @media (min-width: 768px) {
   .favorites-heading {
-    margin: 100px 0 var(--indent-8);
+    margin: 72px 0 var(--indent-8);
     font-size: var(--font-size-3xl);
     line-height: var(--line-height-m);
   }
@@ -169,6 +169,10 @@
 }
 
 @media (min-width: 1024px) {
+  .favorites-heading {
+    margin: 62px 0 var(--indent-8);
+  }
+
   .page-favorites .favorites-quote {
     display: flex;
     flex-direction: row;
