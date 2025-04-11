@@ -206,6 +206,5 @@ h1 {
 
   .filter-card {
     max-height: 242px;
-    margin-left: var(--indent-8);
   }
 }
