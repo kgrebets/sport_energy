@@ -95,6 +95,10 @@
   position: relative;
 }
 
+.icon-col .sun-icon {
+  color: var(--color-white);
+}
+
 .col {
   position: relative;
 }
@@ -102,6 +106,7 @@
 .running-icon {
   background-color: #F4F4F433;
   border-radius: 50%;
+  color: var(--color-white);
 }
 .running-icon use {
   transform: translate(5px, 5px);

@@ -67,6 +67,7 @@ h1 {
     position: relative;
     transition: transform 0.2s ease;
     max-height: 225px;
+    cursor: pointer;
   }
 
   @media only screen and (hover: hover) {
@@ -98,35 +99,6 @@ h1 {
     line-height: var(--line-height-3xl);
   }
 
-  /* Pagination */
-  .filter-pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: var(--indent-2);
-    margin-top: var(--indent-5);
-    margin-bottom: var(--indent-20);
-  }
-
-  .filter-pagination .pagination-page {
-    font-size: var(--font-size-l);
-    line-height: 1;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 31px;
-    height: 31px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-light-gray-secondary);
-  }
-
-  .filter-pagination .pagination-page.active {
-    border: 1px solid var(--color-dark-gray);
-    border-radius: var(--border-radius-full);
-    color: var(--color-dark-gray);
-  }
-
   /* Responsive */
 
 @media only screen and (min-width: 768px) {
@@ -137,16 +109,6 @@ h1 {
 
   .filters-output .filter-card {
     width: calc((100% - 2 * var(--indent-4)) / 3);
-  }
-
-  .filter-pagination {
-    margin-top: var(--indent-8);
-    margin-bottom: var(--indent-16);
-  }
-
-  .filter-pagination .pagination-page {
-    font-size: var(--font-size-xl);
-    line-height: var(--line-height-xl);
   }
 
   .filter-name {

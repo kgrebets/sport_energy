@@ -2,7 +2,7 @@ import { FilterResponse } from "../js/types/response.types";
 
 export function generateFiltersHtml(items: FilterResponse[]) {
   return items.map(item => `
-          <li class="filter-card">
+          <li class="filter-card" data-filter-type="${item.filter}" data-filter-name="${item.name}">
             <img src="${item.imgURL}" alt="${item.name}" />
             <div class="filter-info">
               <div class="filter-name">${item.name}</div>
