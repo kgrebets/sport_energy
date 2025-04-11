@@ -180,12 +180,12 @@ export function initFilters(): void {
   tabsContainer.addEventListener('click', (event) => {
     const target = event.target as HTMLElement;
 
-    if (target.tagName.toLowerCase() !== 'li') return;
+    if (target.tagName.toLowerCase() !== 'button') return;
 
     const newFilter = target.dataset.filter as FilterType;
     if (!newFilter || newFilter === currentFilter) return;
 
-    tabsContainer.querySelectorAll('li').forEach(t => t.classList.remove('active'));
+    tabsContainer.querySelectorAll('button').forEach(t => t.classList.remove('active'));
     target.classList.add('active');
 
     currentFilter = newFilter;
