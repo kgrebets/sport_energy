@@ -45,7 +45,7 @@
 
 .mobile-menu__content {
   position: relative;
-  width: 170px;
+  width: 210px;
   height: 100%;
   background-color: var(--color-dark-gray);
   transition: transform 0.3s ease;
@@ -96,7 +96,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
 }
 
 .socialmedia-icon {
@@ -104,11 +104,10 @@
   align-items: center;
   justify-content: center;
   padding: 8px;
-  gap: 8px;
   border-radius: var(--border-radius-s);
   border: 1px solid rgba(244, 244, 244, 0.1);
-  width: 28px;
-  height: 28px;
+  width: 40px;
+  height: 40px;
 }
 
 .socialmedia-icon use {
@@ -138,7 +137,7 @@
   .main-nav {
     display: flex;
     padding: 0 34px;
-    width: 162px;
+    width: 233px;
     height: 52px;
     flex-shrink: 0;
     border-radius: 60px;
@@ -199,6 +198,7 @@
 
 @media (min-width: 1025px) {
   .main-nav {
+    width: 265px;
     padding: 0 50px;
   }
 }
