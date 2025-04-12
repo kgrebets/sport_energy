@@ -62,9 +62,13 @@ export function generateExerciseModal(data: ExerciseResponse) {
             <div class="modal-buttons">
               <button id="fav-btn" class="btn-white">${
                 favoritesService.isFavorite(data._id)
-                  ? 'Remove from favorites ♡'
-                  : 'Add to favorites ♡'
-              }</button>
+                  ? 'Remove from favorites'
+                  : 'Add to favorites'
+              }
+               <svg class="icon heart-icon" width="20" height="20">
+                  <use href="./img/sprite.svg#heart"></use>
+              </svg>
+              </button>
               <button id="rate-btn" class="btn-black">Give a rating</button>
             </div>
           </div>
@@ -91,7 +95,7 @@ export function generateRatingModal() {
                 </div>
               </div>
             </div>
-  
+
             <input type="email" name="email" placeholder="Email" required pattern="^\\w+(\\.\\w+)?@[a-zA-Z_]+?\\.[a-zA-Z]{2,3}$"/>
             <textarea name="comment" placeholder="Your comment" required></textarea>
             <button type="submit">Send</button>
