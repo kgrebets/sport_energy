@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 import { YOUR_ENERGY_API_URL } from "../constants/general";
 import { showErrorMessage } from "../utils/toasts";
 import { hideLoader, showLoader } from "../loader";
@@ -75,9 +75,18 @@ export const makePatchRequest = async <T, K>(endpoint: string, requestData: T): 
     const { data } = await axios.patch<K>(`${YOUR_ENERGY_API_URL}${endpoint}`, requestData);
 
     return data;
-  } catch (e) {
+  } catch (e: AxiosError | Error) {
     console.error(e);
-    showErrorMessage();
+
+    if (axios.isAxiosError(e) && e.response?.data) {
+      showErrorMessage({
+        title: 'Error',
+        message: e.response.data.message,
+        position: 'topRight',
+      });
+    } else {
+      showErrorMessage();
+    }
   }
   finally {
     hideLoader();
