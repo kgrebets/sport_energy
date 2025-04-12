@@ -1,4 +1,4 @@
-import{m as C,s as H,a as $,f as P,i as A}from"./assets/init-footer-82zN2L3w.js";import"./assets/vendor-BAoYjrW1.js";async function B(e){const t=await C("filters",e);if(!t)throw new Error("Cant' get filters");return t}function I(e){return e.map(t=>`
+import{m as C,s as H,a as $,f as P,i as A}from"./assets/init-footer-CioJlKFE.js";import"./assets/vendor-BAoYjrW1.js";async function B(e){const t=await C("filters",e);if(!t)throw new Error("Cant' get filters");return t}function I(e){return e.map(t=>`
           <li class="filter-card" data-filter-type="${t.filter}" data-filter-name="${t.name}">
             <img src="${t.imgURL}" alt="${t.name}" />
             <div class="filter-info">
