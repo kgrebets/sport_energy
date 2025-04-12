@@ -39,6 +39,8 @@ export function initFilters(): void {
 
   function loadFilters(filter: FilterType, page: number): void {
     const limit = 12;
+    filtersOutputContainer.innerHTML = '';
+    paginationContainer.innerHTML = '';
 
     getFilters({ filter, page, limit })
       .then(response => {
@@ -46,6 +48,7 @@ export function initFilters(): void {
         paginationContainer.innerHTML = generatePaginationHtml(response.totalPages, page);
         filtersOutputContainer.style.display = 'flex';
         paginationContainer.style.display = 'flex';
+
         setExercisesSubheader(null);
 
         exercisesListContainer.style.display = 'none';

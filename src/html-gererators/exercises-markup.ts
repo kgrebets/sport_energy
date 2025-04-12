@@ -13,7 +13,7 @@ export function exercisesMarkup(
     bodyPart.toLowerCase() === 'cardio' ? 'running' : 'fluent-food';
 
   return `
-<li class="exercises-category-tile-item" data-id="${_id}">
+<li class="exercises-category-tile-item">
   <div class="exercises-category-tile-top">
     <div class="exercises-category-tile-workout-wrapper">
       <span class="exercises-category-tile-badge">
@@ -26,7 +26,7 @@ export function exercisesMarkup(
         </svg>
       </div>
     </div>
-    <button class="exercises-category-tile-button">
+    <button class="exercises-category-tile-button" data-id="${_id}">
       Start
       <svg class="exercises-category-tile-arrow-icon" width="16" height="16">
         <use href="./../img/sprite.svg#arrow-right"></use>

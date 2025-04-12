@@ -20,10 +20,10 @@ export function initExerciseEvents(container: HTMLElement) {
       return;
     }
 
-    const li = target.closest('.exercises-category-tile-item') as HTMLElement;
-    if (!li) return;
+    const button = target.closest('.exercises-category-tile-button, .exercises-category-tile-button-start') as HTMLElement;
+    if (!button) return;
 
-    const id = li.getAttribute('data-id');
+    const id = button.getAttribute('data-id');
     if (!id) return;
 
     const exercise = await getExerciseById(id);
