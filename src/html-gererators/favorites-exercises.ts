@@ -1,13 +1,12 @@
 import { Exercise } from '../js/types/general.types';
 
-
 export function renderExerciseCard(exercise: Exercise): string {
   return `
 <li class="exercises-category-tile-item" data-id="${exercise._id}">
                   <div class="exercises-category-tile-top">
                     <div class="exercises-category-tile-top-wrapper">
                     <span class="exercises-category-tile-badge">WORKOUT</span>
-                    <button class="exercises-category-tile-button-delete" aria-label="Remove from favorites" data-id="${exercise._id}">
+                    <button class="exercises-category-tile-button-delete" aria-label="Remove from favorites" data-id="${exercise._id}" data-modal-ignore>
                       <svg class="icon" width="20" height="20">
                         <use href="./img/sprite.svg#trash"></use>
                       </svg>

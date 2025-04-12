@@ -12,16 +12,23 @@ import { favoritesService } from '../services/favorites-service';
 export function initExerciseEvents(container: HTMLElement) {
   container.addEventListener('click', async e => {
     const target = e.target as HTMLElement;
+
+    const isInteractiveElement = target.closest(
+      'a, input, select, textarea, [data-modal-ignore]'
+    );
+    if (isInteractiveElement) {
+      return;
+    }
+
     const li = target.closest('.exercises-category-tile-item') as HTMLElement;
+    if (!li) return;
 
-    if (li) {
-      const id = li.getAttribute('data-id');
-      if (!id) return;
+    const id = li.getAttribute('data-id');
+    if (!id) return;
 
-      const exercise = await getExerciseById(id);
-      if (exercise) {
-        initExerciseModal(exercise);
-      }
+    const exercise = await getExerciseById(id);
+    if (exercise) {
+      initExerciseModal(exercise);
     }
   });
 }

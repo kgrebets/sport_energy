@@ -36,7 +36,6 @@ export function initFavorites(): void {
 
   function deleteFavorite(id: string): void {
     favoritesService.removeFavorite(id);
-    // No need to call loadAndRenderFavorites() here as it will be triggered by the event listener
   }
 
   function attachDeleteListeners(): void {
@@ -129,77 +128,3 @@ export function initFavorites(): void {
 
   loadAndRenderFavorites();
 }
-
-// import { Exercise } from "./types/general.types";
-// import { YOUR_ENERGY_API_URL } from "./constants/general";
-// import { renderExerciseCard } from "../html-gererators/favorites-exercises";
-
-// export function initFavorites(): void {
-//   const favoritesOutputContainer = document.querySelector('.exercises-content') as HTMLElement;
-//   if (!favoritesOutputContainer) return;
-
-//   function loadFavoriteIds(): string[] {
-//     try {
-//       const data = JSON.parse(localStorage.getItem('favorites') || '[]');
-//       return Array.isArray(data) ? data : [];
-//     } catch (error) {
-//       console.error('Failed to load favorites from localStorage:', error);
-//       return [];
-//     }
-//   }
-
-//   async function fetchExerciseById(id: string): Promise<Exercise | null> {
-//     try {
-//       const res = await fetch(`${YOUR_ENERGY_API_URL}/exercises/${id}`);
-//       if (!res.ok) throw new Error('Exercise not found');
-//       const data = await res.json();
-//       return data;
-//     } catch (error) {
-//       console.error(`Failed to fetch exercise with id ${id}:`, error);
-//       return null;
-//     }
-//   }
-
-//   function deleteFavorite(id: string): void {
-//     const storedIds = loadFavoriteIds();
-//     const updatedIds = storedIds.filter(favId => favId !== id);
-//     localStorage.setItem('favorites', JSON.stringify(updatedIds));
-//     loadAndRenderFavorites();
-//   }
-
-//   function attachDeleteListeners(): void {
-//     const trashButtons = favoritesOutputContainer.querySelectorAll<HTMLButtonElement>(
-//       '.exercises-category-tile-button-delete'
-//     );
-
-//     trashButtons.forEach(button => {
-//       button.addEventListener('click', () => {
-//         const id = button.dataset.id;
-//         if (!id) return;
-//         deleteFavorite(id);
-//       });
-//     });
-//   }
-
-//   async function loadAndRenderFavorites(): Promise<void> {
-//     const favoriteIds = loadFavoriteIds();
-//     const fetchPromises = favoriteIds.map(id => fetchExerciseById(id));
-//     const results = await Promise.all(fetchPromises);
-//     const validExercises = results.filter((ex): ex is Exercise => ex !== null);
-
-//     if (validExercises.length === 0) {
-//       favoritesOutputContainer.innerHTML = `
-//         <p>It appears that you haven't added any exercises to your favorites yet.
-//         To get started, you can add exercises that you like to your favorites for easier access in the future.</p>`;
-//       return;
-//     }
-
-//     favoritesOutputContainer.innerHTML = validExercises
-//       .map(renderExerciseCard)
-//       .join('');
-
-//     attachDeleteListeners();
-//   }
-
-//   loadAndRenderFavorites();
-// }
