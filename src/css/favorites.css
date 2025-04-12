@@ -115,7 +115,8 @@
 
 .page-favorites .favorites-list {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 .page-favorites .no-favorites {
@@ -202,6 +203,9 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--indent-5);
+  width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .page-favorites .exercises-category-tile-item {
@@ -359,16 +363,21 @@
   .page-favorites .exercises-content {
     margin-top: var(--indent-5);
     margin-bottom: var(--indent-8);
+    width: 100%;
   }
 
   .page-favorites .exercises-list {
     gap: var(--indent-4);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(335px, 1fr));
+    width: 100%;
   }
 
   .page-favorites .exercises-category-tile-item {
-    min-width: 335px;
-    flex: 1 1 calc(50% - var(--indent-5));
-    max-width: calc(50% - var(--indent-5));
+    min-width: initial;
+    flex: initial;
+    max-width: initial;
+    width: 100%;
     box-sizing: border-box;
   }
 }
@@ -392,6 +401,8 @@
 
   .page-favorites .favorites-list {
     flex: 2;
+    width: 100%;
+    justify-content: flex-start;
   }
 
   .page-favorites .quote-of-the-day h2 {
