@@ -1,5 +1,5 @@
-import{f as g,i as v}from"./assets/init-footer-Sr1Fd7IC.js";import"./assets/vendor-BAoYjrW1.js";function p(e){return`
-<li class="exercises-category-tile-item">
+import{f as u,i as v}from"./assets/init-footer-B8xpovtY.js";import"./assets/vendor-BAoYjrW1.js";function p(e){return`
+<li class="exercises-category-tile-item" data-id="${e._id}">
                   <div class="exercises-category-tile-top">
                     <div class="exercises-category-tile-top-wrapper">
                     <span class="exercises-category-tile-badge">WORKOUT</span>
@@ -11,7 +11,7 @@ import{f as g,i as v}from"./assets/init-footer-Sr1Fd7IC.js";import"./assets/vend
                     </div>
                     <div class="exercises-category-tile-top-wrapper">
                     <span class="exercises-category-tile-start">Start</span>
-                    <button class="" aria-label="Start workout">
+                    <button class="exercises-category-tile-button-start" aria-label="Start workout">
                       <svg class="icon" width="20" height="20">
                         <use href="./img/sprite.svg#arrow-right"></use>
                       </svg>
@@ -44,10 +44,14 @@ import{f as g,i as v}from"./assets/init-footer-Sr1Fd7IC.js";import"./assets/vend
                     </div>
                   </div>
                 </li>
-    `}function u(e,t){if(!e||e.length===0){t.innerHTML=`
+    `}function d(){return window.innerWidth>=1024}function m(){return window.innerWidth>=768&&window.innerWidth<1024}function g(e,r){if(!e||e.length===0){r.innerHTML=`
         <p class="no-favorites">
           It appears that you haven't added any exercises to your favorites yet.
           To get started, you can add exercises that you like to your favorites for easier access in the future.
         </p>
-      `;return}const s=8;let o=1;const n=Math.ceil(e.length/s),c=(o-1)*s,l=c+s,d=e.slice(c,l).map(p).join("");t.innerHTML=`<ul class="exercises-list">${d}</ul>`;const r=document.createElement("div");r.classList.add("pagination");for(let a=1;a<=n;a++){const i=document.createElement("button");i.classList.add("pagination-btn"),a===o&&i.classList.add("active"),i.textContent=a.toString(),i.dataset.page=a.toString(),r.appendChild(i)}t.appendChild(r)}function m(){const e=document.querySelector(".exercises-content");function t(){try{return JSON.parse(localStorage.getItem("favorites")||"[]")}catch{return[]}}u(t(),e)}g();m();v();
+      `;return}let o=8,c=1,t,n=1;if(d())t=e;else{m()&&(o=10),n=Math.ceil(e.length/o);const i=(c-1)*o,a=i+o;t=e.slice(i,a)}const s=t.map(p).join("");if(d()?r.innerHTML=`
+            <div class="exercises-scroll-container">
+                <ul class="exercises-list">${s}</ul>
+            </div>
+        `:r.innerHTML=`<ul class="exercises-list">${s}</ul>`,!d()){const i=document.createElement("div");i.classList.add("pagination");for(let a=1;a<=n;a++){const l=document.createElement("button");l.classList.add("pagination-btn"),a===c&&l.classList.add("active"),l.textContent=a.toString(),l.dataset.page=a.toString(),i.appendChild(l)}r.appendChild(i)}}function f(){const e=document.querySelector(".exercises-content");function r(){try{return JSON.parse(localStorage.getItem("favorites")||"[]")}catch{return[]}}function o(t){const s=JSON.parse(localStorage.getItem("favorites")||"[]").filter(i=>i._id!==t);localStorage.setItem("favorites",JSON.stringify(s)),g(s,e),c()}function c(){e.querySelectorAll(".exercises-category-tile-button-delete").forEach(n=>{n.addEventListener("click",()=>{const s=n.dataset.id;s&&o(s)})})}g(r(),e),c()}u();f();v();
 //# sourceMappingURL=favorites.js.map
