@@ -4,6 +4,5 @@ import { initFavorites } from "./js/init-favorites";
 
 
 fetchQuote();
-initFavorites();    
+initFavorites();
 initFooter();
-  

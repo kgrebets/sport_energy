@@ -2,7 +2,7 @@ import { Exercise } from '../js/types/general.types';
 
 
 export function renderExerciseCard(exercise: Exercise): string {
-    return `
+  return `
 <li class="exercises-category-tile-item" data-id="${exercise._id}">
                   <div class="exercises-category-tile-top">
                     <div class="exercises-category-tile-top-wrapper">

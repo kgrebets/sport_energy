@@ -108,6 +108,7 @@
   background-color: #f4f4f433;
   border-radius: 50%;
 }
+
 .page-favorites .running-icon use {
   transform: translate(5px, 5px);
 }
@@ -147,9 +148,11 @@
   .daily-norm p {
     font-size: 0.85rem;
   }
+
   .page-favorites .quote-of-the-day {
     flex-grow: 6;
   }
+
   .page-favorites .daily-norm,
   .page-favorites .image-section {
     flex: 1 1 calc(50% - 8px);
@@ -357,6 +360,7 @@
     margin-top: var(--indent-5);
     margin-bottom: var(--indent-8);
   }
+
   .page-favorites .exercises-list {
     gap: var(--indent-4);
   }
@@ -373,6 +377,7 @@
   .page-favorites .exercises-content {
     margin-top: 0;
   }
+
   .page-favorites .favorites-content {
     display: flex;
     gap: 32px;
