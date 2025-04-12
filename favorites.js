@@ -1,4 +1,4 @@
-import{c as L,d as v,Y as P,f as $,i as T,b as F,F as I}from"./assets/modal-controller-C-chPD4O.js";import"./assets/vendor-BAoYjrW1.js";function S(e){const l=L(e.name);return`
+import{c as m,d as c,Y as p,f as y,i as f,b as h,F as x}from"./assets/modal-controller-B1ICh_Bl.js";import"./assets/vendor-BAoYjrW1.js";function b(e){const a=m(e.name);return`
 <li class="exercises-category-tile-item" data-id="${e._id}">
                   <div class="exercises-category-tile-top">
                     <div class="exercises-category-tile-top-wrapper">
@@ -26,7 +26,7 @@ import{c as L,d as v,Y as P,f as $,i as T,b as F,F as I}from"./assets/modal-cont
                         <use href="./img/sprite.svg#running"></use>
                       </svg>
                     </div>
-                    <h3 class="exercise-name">${l}</h3>
+                    <h3 class="exercise-name">${a}</h3>
                   </div>
             
                   <div class="exercises-category-tile-bottom">
@@ -44,13 +44,9 @@ import{c as L,d as v,Y as P,f as $,i as T,b as F,F as I}from"./assets/modal-cont
                     </div>
                   </div>
                 </li>
-    `}function p(){function e(){return window.innerWidth>=1024}function l(){return window.innerWidth>=768&&window.innerWidth<1024}function f(){return l()?10:8}const n=document.querySelector(".exercises-content");if(!n)return;async function h(s){try{const t=await fetch(`${P}exercises/${s}`);if(!t.ok)throw new Error("Exercise not found");return await t.json()}catch(t){return console.error(`Failed to fetch exercise with id ${s}:`,t),null}}function y(s){v.removeFavorite(s)}function x(){n.querySelectorAll(".exercises-category-tile-button-delete").forEach(t=>{t.addEventListener("click",()=>{const o=t.dataset.id;o&&y(o)})})}function b(s,t,o){const r=document.createElement("div");r.classList.add("pagination");for(let i=1;i<=s;i++){const a=document.createElement("button");a.classList.add("pagination-btn"),i===t&&a.classList.add("active"),a.textContent=i.toString(),a.dataset.page=i.toString(),a.addEventListener("click",()=>o(i)),r.appendChild(a)}return r}async function E(){const s=v.getFavoriteIds();console.log(s);const t=s.map(c=>h(c)),r=(await Promise.all(t)).filter(c=>c!==null);if(r.length===0){n.innerHTML=`
+    `}function l(){const e=document.querySelector(".exercises-content");if(!e)return;async function a(s){try{const t=await fetch(`${p}exercises/${s}`);if(!t.ok)throw new Error("Exercise not found");return await t.json()}catch(t){return console.error(`Failed to fetch exercise with id ${s}:`,t),null}}function d(s){c.removeFavorite(s)}function u(){e.querySelectorAll(".exercises-category-tile-button-delete").forEach(t=>{t.addEventListener("click",()=>{const i=t.dataset.id;i&&d(i)})})}async function v(){const s=c.getFavoriteIds();console.log(s);const t=s.map(r=>a(r)),o=(await Promise.all(t)).filter(r=>r!==null);if(o.length===0){e.innerHTML=`
         <p class="no-favorites">
           It appears that you haven't added any exercises to your favorites yet.
           To get started, you can add exercises that you like to your favorites for easier access in the future.
-        </p>`;return}let i=1;const a=f(),w=e()?1:Math.ceil(r.length/a),d=c=>{i=c;const u=(c-1)*a,g=(e()?r:r.slice(u,u+a)).map(S).join("");e()?n.innerHTML=`
-          <div class="exercises-scroll-container">
-            <ul class="exercises-list">${g}</ul>
-          </div>
-        `:(n.innerHTML=`<ul class="exercises-list">${g}</ul>`,n.appendChild(b(w,i,d))),x()};d(i)}E()}$();p();T();const m=document.querySelector(".favorites-list");m instanceof HTMLElement&&F(m);document.addEventListener(I,()=>{p()});
+        </p>`;return}const g=o.map(b).join("");e.innerHTML=`<ul class="exercises-list">${g}</ul>`,u()}v()}y();l();f();const n=document.querySelector(".favorites-list");n instanceof HTMLElement&&h(n);document.addEventListener(x,()=>{l()});
 //# sourceMappingURL=favorites.js.map
