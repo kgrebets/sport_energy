@@ -1,6 +1,8 @@
 import { Exercise } from '../js/types/general.types';
+import { capitalizeFirstLetter } from '../js/utils/capitalizeFirstLetter';
 
 export function renderExerciseCard(exercise: Exercise): string {
+  const capitalizedName = capitalizeFirstLetter(exercise.name);
   return `
 <li class="exercises-category-tile-item" data-id="${exercise._id}">
                   <div class="exercises-category-tile-top">
@@ -29,7 +31,7 @@ export function renderExerciseCard(exercise: Exercise): string {
                         <use href="./img/sprite.svg#running"></use>
                       </svg>
                     </div>
-                    <h3 class="exercise-name">${exercise.name}</h3>
+                    <h3 class="exercise-name">${capitalizedName}</h3>
                   </div>
             
                   <div class="exercises-category-tile-bottom">
