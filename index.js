@@ -1,4 +1,4 @@
-import{m as S,c as H,g as T,s as k,a as L,f as P,i as N,b as A}from"./assets/modal-controller-BN1Pmi3B.js";import"./assets/vendor-BAoYjrW1.js";async function R(s){const e=await S("filters",s);if(!e)throw new Error("Cant' get filters");return e}function D(s){return s.map(e=>`
+import{m as S,c as H,g as T,s as k,a as L,f as P,i as N,b as A}from"./assets/modal-controller-BN1Pmi3B.js";import"./assets/vendor-BAoYjrW1.js";async function R(s){const e=await S("filters",s);if(!e)throw new Error("Cant' get filters");return e}function B(s){return s.map(e=>`
           <li class="filter-card" data-filter-type="${e.filter}" data-filter-name="${e.name}">
             <img src="${e.imgURL}" alt="${e.name}" />
             <div class="filter-info">
@@ -6,9 +6,9 @@ import{m as S,c as H,g as T,s as k,a as L,f as P,i as N,b as A}from"./assets/mod
               <div class="filter-type">${e.filter}</div>
             </div>
           </li>
-        `).join("")}function C(s,e){const n=[];let o=Math.max(1,e-1),l=Math.min(s,o+3-1);l-o+1<3&&(o=Math.max(1,l-3+1));for(let c=o;c<=l;c++)n.push(c);return n.map(c=>`
-    <li class="pagination-page${c===e?" active":""}" data-page="${c}">${c}</li>
-  `).join("")}function j(s,e,n,d,o,l){const c=H(e),m=d.toLowerCase()==="cardio"?"running":"fluent-food";return`
+        `).join("")}function C(s,e){const o=[];let l=Math.max(1,e-1),c=Math.min(s,l+3-1);c-l+1<3&&(l=Math.max(1,c-3+1));for(let u=l;u<=c;u++)o.push(u);return o.map(u=>`
+    <li class="pagination-page${u===e?" active":""}" data-page="${u}">${u}</li>
+  `).join("")}function D(s,e,o,g,l,c){const u=H(e),p=g.toLowerCase()==="cardio"?"running":"fluent-food",i="/sport_energy/img/sprite.svg";return`
 <li class="exercises-category-tile-item">
   <div class="exercises-category-tile-top">
     <div class="exercises-category-tile-workout-wrapper">
@@ -18,38 +18,38 @@ import{m as S,c as H,g as T,s as k,a as L,f as P,i as N,b as A}from"./assets/mod
       <div class="exercises-category-tile-rating-wrapper">
         <span class="exercises-category-tile-rating">${s.toFixed(1)}</span>
         <svg class="exercises-category-tile-star-icon" width="16" height="16">
-          <use href="./../img/sprite.svg#Star"></use>
+          <use href="${i}#Star"></use>
         </svg>
       </div>
     </div>
-    <button class="exercises-category-tile-button" data-id="${l}">
+    <button class="exercises-category-tile-button" data-id="${c}">
       Start
       <svg class="exercises-category-tile-arrow-icon" width="16" height="16">
-        <use href="./../img/sprite.svg#arrow-right"></use>
+        <use href="${i}#arrow-right"></use>
       </svg>
     </button>
   </div>
   <div class="exercises-category-tile-middle">
     <div class="exercises-category-tile-man-icon-container">
       <svg class="exercises-category-tile-man-icon" width="16" height="16">
-        <use href="./../img/sprite.svg#${m}"></use>
+        <use href="${i}#${p}"></use>
       </svg>
     </div>
-    <h3 class="exercises-category-tile-name">${c}</h3>
+    <h3 class="exercises-category-tile-name">${u}</h3>
   </div>
   <ul class="exercises-category-tile-bottom">
       <li class="exercises-category-tile-bottom-item">
         <span class="exercises-category-tile-bottom-title">Burned calories:</span>
-        <span class="exercises-category-tile-bottom-value">${n}</span>
+        <span class="exercises-category-tile-bottom-value">${o}</span>
       </li>
       <li class="exercises-category-tile-bottom-item">
         <span class="exercises-category-tile-bottom-title">Body part:</span>
-        <span class="exercises-category-tile-bottom-value">${d}</span>
+        <span class="exercises-category-tile-bottom-value">${g}</span>
       </li>
       <li class="exercises-category-tile-bottom-item">
         <span class="exercises-category-tile-bottom-title">Target:</span>
-        <span class="exercises-category-tile-bottom-value">${o}</span>
+        <span class="exercises-category-tile-bottom-value">${l}</span>
       </li>
   </ul>
-</li>`}function B(){var E;const s=document.querySelector(".filters-output"),e=document.querySelector(".filter-tabs"),n=document.querySelector(".filter-pagination"),d=document.querySelector(".exercises-list"),o=document.querySelector(".exercises-pagination"),l=document.querySelector(".exercises-filters-form"),c=document.querySelector(".exercises-subheader-container");if(!s)throw new Error("Can't find .filters-output");if(!e)throw new Error("Can't find .filter-tabs");if(!n)throw new Error("Can't find .filter-pagination");if(!l)throw new Error("Can't find .exercises-filters-form");if(!c)throw new Error("Can't find .exercises-subheader-container");let m=(E=e.querySelector(".active"))==null?void 0:E.dataset.filter,g=1,y="",b,x;l.addEventListener("submit",i=>{i.preventDefault(),y=new FormData(l).get("keyword"),v(b,x,g)});function h(i,t){s.innerHTML="",n.innerHTML="",R({filter:i,page:t,limit:12}).then(a=>{s.innerHTML=D(a.results),n.innerHTML=C(a.totalPages,t),s.style.display="flex",n.style.display="flex",w(null),d.style.display="none",o.style.display="none",l.style.display="none",l.reset(),y="",M()}).catch(a=>L({title:"Error",message:a.message,position:"topRight"}))}async function v(i,t,r){if(!d||!o)return;const a=10,u={[i]:t,page:r,limit:a,keyword:y};try{const f=await T(u),F=f.results.map(p=>j(p.rating,p.name,`${p.burnedCalories} kcal`,p.bodyPart,p.target,p._id)).join("");d.innerHTML=F,o.innerHTML=C(f.totalPages,f.page),l.style.display="flex",d.style.display="flex",o.style.display="flex",q(i,t),f.results.length===0&&k({title:"",message:" No excersies found",position:"topRight"})}catch(f){L({title:"Error",message:(f==null?void 0:f.message)||"Failed to load exercises",position:"topRight"})}}function M(){s.querySelectorAll(".filter-card").forEach(t=>{t.addEventListener("click",()=>{const r=t.getAttribute("data-filter-type"),a=t.getAttribute("data-filter-name");if(!r||!a)return;g=1;let u;if(r==="Muscles")u="muscles";else if(r==="Body parts")u="bodypart";else if(r==="Equipment")u="equipment";else return;s&&n&&(s.innerHTML="",s.style.display="none",n.innerHTML="",n.style.display="none"),w(a),b=u,x=a.toLowerCase(),v(u,x,g)})})}function w(i){c.innerHTML=i?` / <span class="exercises-subheader">${i}</span>`:""}function q(i,t){o.querySelectorAll(".pagination-page").forEach(a=>{a.addEventListener("click",()=>{const u=Number(a.getAttribute("data-page"));!u||u===g||(g=u,v(i,t,g))})})}e.addEventListener("click",i=>{const t=i.target;if(t.tagName.toLowerCase()!=="button")return;const r=t.dataset.filter;!r||r===m||(e.querySelectorAll("button").forEach(a=>a.classList.remove("active")),t.classList.add("active"),m=r,g=1,h(m,g))}),n.addEventListener("click",i=>{const t=i.target;if(t.tagName.toLowerCase()!=="li")return;const r=Number(t.dataset.page);!r||r===g||(g=r,h(m,g))}),h(m,g)}B();P();N();const $=document.querySelector(".exercises-content");$ instanceof HTMLElement&&A($);
+</li>`}function j(){var E;const s=document.querySelector(".filters-output"),e=document.querySelector(".filter-tabs"),o=document.querySelector(".filter-pagination"),g=document.querySelector(".exercises-list"),l=document.querySelector(".exercises-pagination"),c=document.querySelector(".exercises-filters-form"),u=document.querySelector(".exercises-subheader-container");if(!s)throw new Error("Can't find .filters-output");if(!e)throw new Error("Can't find .filter-tabs");if(!o)throw new Error("Can't find .filter-pagination");if(!c)throw new Error("Can't find .exercises-filters-form");if(!u)throw new Error("Can't find .exercises-subheader-container");let p=(E=e.querySelector(".active"))==null?void 0:E.dataset.filter,i=1,y="",b,x;c.addEventListener("submit",r=>{r.preventDefault(),y=new FormData(c).get("keyword"),v(b,x,i)});function h(r,t){s.innerHTML="",o.innerHTML="",R({filter:r,page:t,limit:12}).then(n=>{s.innerHTML=B(n.results),o.innerHTML=C(n.totalPages,t),s.style.display="flex",o.style.display="flex",w(null),g.style.display="none",l.style.display="none",c.style.display="none",c.reset(),y="",M()}).catch(n=>L({title:"Error",message:n.message,position:"topRight"}))}async function v(r,t,a){if(!g||!l)return;const n=10,d={[r]:t,page:a,limit:n,keyword:y};try{const f=await T(d),F=f.results.map(m=>D(m.rating,m.name,`${m.burnedCalories} kcal`,m.bodyPart,m.target,m._id)).join("");g.innerHTML=F,l.innerHTML=C(f.totalPages,f.page),c.style.display="flex",g.style.display="flex",l.style.display="flex",q(r,t),f.results.length===0&&k({title:"",message:" No excersies found",position:"topRight"})}catch(f){L({title:"Error",message:(f==null?void 0:f.message)||"Failed to load exercises",position:"topRight"})}}function M(){s.querySelectorAll(".filter-card").forEach(t=>{t.addEventListener("click",()=>{const a=t.getAttribute("data-filter-type"),n=t.getAttribute("data-filter-name");if(!a||!n)return;i=1;let d;if(a==="Muscles")d="muscles";else if(a==="Body parts")d="bodypart";else if(a==="Equipment")d="equipment";else return;s&&o&&(s.innerHTML="",s.style.display="none",o.innerHTML="",o.style.display="none"),w(n),b=d,x=n.toLowerCase(),v(d,x,i)})})}function w(r){u.innerHTML=r?` / <span class="exercises-subheader">${r}</span>`:""}function q(r,t){l.querySelectorAll(".pagination-page").forEach(n=>{n.addEventListener("click",()=>{const d=Number(n.getAttribute("data-page"));!d||d===i||(i=d,v(r,t,i))})})}e.addEventListener("click",r=>{const t=r.target;if(t.tagName.toLowerCase()!=="button")return;const a=t.dataset.filter;!a||a===p||(e.querySelectorAll("button").forEach(n=>n.classList.remove("active")),t.classList.add("active"),p=a,i=1,h(p,i))}),o.addEventListener("click",r=>{const t=r.target;if(t.tagName.toLowerCase()!=="li")return;const a=Number(t.dataset.page);!a||a===i||(i=a,h(p,i))}),h(p,i)}j();P();N();const $=document.querySelector(".exercises-content");$ instanceof HTMLElement&&A($);
 //# sourceMappingURL=index.js.map
