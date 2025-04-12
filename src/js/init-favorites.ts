@@ -4,19 +4,6 @@ import { renderExerciseCard } from '../html-gererators/favorites-exercises';
 import { favoritesService } from '../services/favorites-service';
 
 export function initFavorites(): void {
-  function isDesktop(): boolean {
-    return window.innerWidth >= 1024;
-  }
-
-  function isTablet(): boolean {
-    return window.innerWidth >= 768 && window.innerWidth < 1024;
-  }
-
-  function getItemsPerPage(): number {
-    if (isTablet()) return 10;
-    return 8;
-  }
-
   const favoritesOutputContainer = document.querySelector(
     '.exercises-content'
   ) as HTMLElement;
@@ -52,29 +39,6 @@ export function initFavorites(): void {
     });
   }
 
-  function renderPagination(
-    totalPages: number,
-    currentPage: number,
-    onPageChange: (page: number) => void
-  ): HTMLElement {
-    const paginationContainer = document.createElement('div');
-    paginationContainer.classList.add('pagination');
-
-    for (let i = 1; i <= totalPages; i++) {
-      const pageButton = document.createElement('button');
-      pageButton.classList.add('pagination-btn');
-      if (i === currentPage) pageButton.classList.add('active');
-      pageButton.textContent = i.toString();
-      pageButton.dataset.page = i.toString();
-
-      pageButton.addEventListener('click', () => onPageChange(i));
-
-      paginationContainer.appendChild(pageButton);
-    }
-
-    return paginationContainer;
-  }
-
   async function loadAndRenderFavorites(): Promise<void> {
     const favoriteIds = favoritesService.getFavoriteIds();
     console.log(favoriteIds);
@@ -92,38 +56,9 @@ export function initFavorites(): void {
       return;
     }
 
-    let currentPage = 1;
-    const itemsPerPage = getItemsPerPage();
-    const totalPages = isDesktop()
-      ? 1
-      : Math.ceil(validExercises.length / itemsPerPage);
-
-    const renderPage = (page: number): void => {
-      currentPage = page;
-      const start = (page - 1) * itemsPerPage;
-      const visibleItems = isDesktop()
-        ? validExercises
-        : validExercises.slice(start, start + itemsPerPage);
-
-      const markup = visibleItems.map(renderExerciseCard).join('');
-
-      if (isDesktop()) {
-        favoritesOutputContainer.innerHTML = `
-          <div class="exercises-scroll-container">
-            <ul class="exercises-list">${markup}</ul>
-          </div>
-        `;
-      } else {
-        favoritesOutputContainer.innerHTML = `<ul class="exercises-list">${markup}</ul>`;
-        favoritesOutputContainer.appendChild(
-          renderPagination(totalPages, currentPage, renderPage)
-        );
-      }
-
-      attachDeleteListeners();
-    };
-
-    renderPage(currentPage);
+    const markup = validExercises.map(renderExerciseCard).join('');
+    favoritesOutputContainer.innerHTML = `<ul class="exercises-list">${markup}</ul>`;
+    attachDeleteListeners();
   }
 
   loadAndRenderFavorites();
