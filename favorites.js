@@ -1,4 +1,4 @@
-import{c as L,d as v,Y as P,f as $,i as T,b as F,F as I}from"./assets/modal-controller-DhIMdvhu.js";import"./assets/vendor-BAoYjrW1.js";function S(e){const l=L(e.name);return`
+import{c as L,d as v,Y as P,f as $,i as T,b as F,F as I}from"./assets/modal-controller-C-chPD4O.js";import"./assets/vendor-BAoYjrW1.js";function S(e){const l=L(e.name);return`
 <li class="exercises-category-tile-item" data-id="${e._id}">
                   <div class="exercises-category-tile-top">
                     <div class="exercises-category-tile-top-wrapper">
