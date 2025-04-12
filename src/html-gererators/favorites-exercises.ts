@@ -4,7 +4,7 @@ import { capitalizeFirstLetter } from '../js/utils/capitalizeFirstLetter';
 export function renderExerciseCard(exercise: Exercise): string {
   const capitalizedName = capitalizeFirstLetter(exercise.name);
   return `
-<li class="exercises-category-tile-item" data-id="${exercise._id}">
+<li class="exercises-category-tile-item">
                   <div class="exercises-category-tile-top">
                     <div class="exercises-category-tile-top-wrapper">
                     <span class="exercises-category-tile-badge">WORKOUT</span>
@@ -15,8 +15,8 @@ export function renderExerciseCard(exercise: Exercise): string {
                     </button>
                     </div>
                     <div class="exercises-category-tile-top-wrapper">
-                    <span class="exercises-category-tile-start">Start</span>
-                    <button class="exercises-category-tile-button-start" aria-label="Start workout">
+                    <button class="exercises-category-tile-button-start" aria-label="Start workout" data-id="${exercise._id}">
+                     <span class="exercises-category-tile-start">Start</span>
                       <svg class="icon" width="20" height="20">
                         <use href="./img/sprite.svg#arrow-right"></use>
                       </svg>
@@ -24,7 +24,7 @@ export function renderExerciseCard(exercise: Exercise): string {
                     </div>
 
                   </div>
-            
+
                   <div class="exercises-category-tile-middle">
                     <div class="exercises-category-tile-man-icon-container">
                       <svg class="exercises-category-tile-man-icon" width="24" height="24">
@@ -33,7 +33,7 @@ export function renderExerciseCard(exercise: Exercise): string {
                     </div>
                     <h3 class="exercise-name">${capitalizedName}</h3>
                   </div>
-            
+
                   <div class="exercises-category-tile-bottom">
                     <div class="exercises-category-tile-bottom-item">
                       <span class="exercises-category-tile-bottom-title">Burned calories:</span>
