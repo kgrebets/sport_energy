@@ -1,44 +1,26 @@
-import { Exercise } from "./types/general.types";
-import { YOUR_ENERGY_API_URL } from "./constants/general";
-import { renderExerciseCard } from "../html-gererators/favorites-exercises";
-
+import { Exercise } from './types/general.types';
+import { YOUR_ENERGY_API_URL } from './constants/general';
+import { renderExerciseCard } from '../html-gererators/favorites-exercises';
+import { favoritesService } from '../services/favorites-service';
 
 export function initFavorites(): void {
   function isDesktop(): boolean {
     return window.innerWidth >= 1024;
   }
-  
+
   function isTablet(): boolean {
     return window.innerWidth >= 768 && window.innerWidth < 1024;
   }
-  
+
   function getItemsPerPage(): number {
     if (isTablet()) return 10;
     return 8;
   }
 
-  const favoritesOutputContainer = document.querySelector('.exercises-content') as HTMLElement;
+  const favoritesOutputContainer = document.querySelector(
+    '.exercises-content'
+  ) as HTMLElement;
   if (!favoritesOutputContainer) return;
-
-  function loadFavoriteIds(): string[] {
-    try {
-      const raw = localStorage.getItem('favorites');
-      if (!raw) return [];
-  
-      const data = JSON.parse(raw);
-
-      if (!Array.isArray(data) || !data.every(id => typeof id === 'string')) {
-        throw new Error('Invalid format in favorites');
-      }
-  
-      return data;
-
-    } catch (error) {
-      console.error('Failed to load favorites from localStorage:', error);
-      localStorage.removeItem('favorites');
-      return [];
-    }
-  }
 
   async function fetchExerciseById(id: string): Promise<Exercise | null> {
     try {
@@ -53,16 +35,14 @@ export function initFavorites(): void {
   }
 
   function deleteFavorite(id: string): void {
-    const storedIds = loadFavoriteIds();
-    const updatedIds = storedIds.filter(favId => favId !== id);
-    localStorage.setItem('favorites', JSON.stringify(updatedIds));
-    loadAndRenderFavorites();
+    favoritesService.removeFavorite(id);
   }
 
   function attachDeleteListeners(): void {
-    const trashButtons = favoritesOutputContainer.querySelectorAll<HTMLButtonElement>(
-      '.exercises-category-tile-button-delete'
-    );
+    const trashButtons =
+      favoritesOutputContainer.querySelectorAll<HTMLButtonElement>(
+        '.exercises-category-tile-button-delete'
+      );
     trashButtons.forEach(button => {
       button.addEventListener('click', () => {
         const id = button.dataset.id;
@@ -96,9 +76,9 @@ export function initFavorites(): void {
   }
 
   async function loadAndRenderFavorites(): Promise<void> {
-    const favoriteIds = loadFavoriteIds();
+    const favoriteIds = favoritesService.getFavoriteIds();
     console.log(favoriteIds);
-    
+
     const fetchPromises = favoriteIds.map(id => fetchExerciseById(id));
     const results = await Promise.all(fetchPromises);
     const validExercises = results.filter((ex): ex is Exercise => ex !== null);
@@ -114,12 +94,16 @@ export function initFavorites(): void {
 
     let currentPage = 1;
     const itemsPerPage = getItemsPerPage();
-    const totalPages = isDesktop() ? 1 : Math.ceil(validExercises.length / itemsPerPage);
+    const totalPages = isDesktop()
+      ? 1
+      : Math.ceil(validExercises.length / itemsPerPage);
 
     const renderPage = (page: number): void => {
       currentPage = page;
       const start = (page - 1) * itemsPerPage;
-      const visibleItems = isDesktop() ? validExercises : validExercises.slice(start, start + itemsPerPage);
+      const visibleItems = isDesktop()
+        ? validExercises
+        : validExercises.slice(start, start + itemsPerPage);
 
       const markup = visibleItems.map(renderExerciseCard).join('');
 
@@ -131,7 +115,9 @@ export function initFavorites(): void {
         `;
       } else {
         favoritesOutputContainer.innerHTML = `<ul class="exercises-list">${markup}</ul>`;
-        favoritesOutputContainer.appendChild(renderPagination(totalPages, currentPage, renderPage));
+        favoritesOutputContainer.appendChild(
+          renderPagination(totalPages, currentPage, renderPage)
+        );
       }
 
       attachDeleteListeners();
@@ -142,81 +128,3 @@ export function initFavorites(): void {
 
   loadAndRenderFavorites();
 }
-
-
-
-// import { Exercise } from "./types/general.types";
-// import { YOUR_ENERGY_API_URL } from "./constants/general";
-// import { renderExerciseCard } from "../html-gererators/favorites-exercises";
-
-
-// export function initFavorites(): void {
-//   const favoritesOutputContainer = document.querySelector('.exercises-content') as HTMLElement;
-//   if (!favoritesOutputContainer) return;
-
-//   function loadFavoriteIds(): string[] {
-//     try {
-//       const data = JSON.parse(localStorage.getItem('favorites') || '[]');
-//       return Array.isArray(data) ? data : [];
-//     } catch (error) {
-//       console.error('Failed to load favorites from localStorage:', error);
-//       return [];
-//     }
-//   }
-
-//   async function fetchExerciseById(id: string): Promise<Exercise | null> {
-//     try {
-//       const res = await fetch(`${YOUR_ENERGY_API_URL}/exercises/${id}`);
-//       if (!res.ok) throw new Error('Exercise not found');
-//       const data = await res.json();
-//       return data;
-//     } catch (error) {
-//       console.error(`Failed to fetch exercise with id ${id}:`, error);
-//       return null;
-//     }
-//   }
-
-//   function deleteFavorite(id: string): void {
-//     const storedIds = loadFavoriteIds();
-//     const updatedIds = storedIds.filter(favId => favId !== id);
-//     localStorage.setItem('favorites', JSON.stringify(updatedIds));
-//     loadAndRenderFavorites();
-//   }
-  
-
-//   function attachDeleteListeners(): void {
-//     const trashButtons = favoritesOutputContainer.querySelectorAll<HTMLButtonElement>(
-//       '.exercises-category-tile-button-delete'
-//     );
-
-//     trashButtons.forEach(button => {
-//       button.addEventListener('click', () => {
-//         const id = button.dataset.id;
-//         if (!id) return;
-//         deleteFavorite(id);
-//       });
-//     });
-//   }
-
-//   async function loadAndRenderFavorites(): Promise<void> {
-//     const favoriteIds = loadFavoriteIds();
-//     const fetchPromises = favoriteIds.map(id => fetchExerciseById(id));
-//     const results = await Promise.all(fetchPromises);
-//     const validExercises = results.filter((ex): ex is Exercise => ex !== null);
-
-//     if (validExercises.length === 0) {
-//       favoritesOutputContainer.innerHTML = `
-//         <p>It appears that you haven't added any exercises to your favorites yet. 
-//         To get started, you can add exercises that you like to your favorites for easier access in the future.</p>`;
-//       return;
-//     }
-
-//     favoritesOutputContainer.innerHTML = validExercises
-//       .map(renderExerciseCard)
-//       .join(''); 
-
-//     attachDeleteListeners();
-//   }
-
-//   loadAndRenderFavorites();
-// }

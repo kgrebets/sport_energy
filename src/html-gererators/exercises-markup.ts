@@ -1,3 +1,5 @@
+import { capitalizeFirstLetter } from '../js/utils/capitalizeFirstLetter';
+
 export function exercisesMarkup(
   rating: number,
   name: string,
@@ -6,6 +8,7 @@ export function exercisesMarkup(
   target: string,
   _id: string
 ): string {
+  const capitalizedName = capitalizeFirstLetter(name);
   const iconId =
     bodyPart.toLowerCase() === 'cardio' ? 'running' : 'fluent-food';
 
@@ -36,7 +39,7 @@ export function exercisesMarkup(
         <use href="./../img/sprite.svg#${iconId}"></use>
       </svg>
     </div>
-    <h3 class="exercises-category-tile-name">${name}</h3>
+    <h3 class="exercises-category-tile-name">${capitalizedName}</h3>
   </div>
   <ul class="exercises-category-tile-bottom">
       <li class="exercises-category-tile-bottom-item">
