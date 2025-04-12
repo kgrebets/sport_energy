@@ -30,7 +30,7 @@ h1 {
 }
 
 .exercises-filters-form {
-  display: flex;
+  display: none;
   padding: 0;
   gap: 10px;
 

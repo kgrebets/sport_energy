@@ -50,7 +50,7 @@ export function initFilters(): void {
 
         exercisesListContainer.style.display = 'none';
         exercisesPaginationContainer.style.display = 'none';
-        exercisesFiltersForm.hidden = true;
+        exercisesFiltersForm.style.display = 'none';
         exercisesFiltersForm.reset();
         currentKeyword = "";
 
@@ -96,7 +96,7 @@ export function initFilters(): void {
         response.page,
       );
 
-      exercisesFiltersForm.hidden = false;
+      exercisesFiltersForm.style.display = 'flex';
       exercisesListContainer.style.display = 'flex';
       exercisesPaginationContainer.style.display = 'flex';
 
