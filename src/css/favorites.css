@@ -404,4 +404,22 @@
     letter-spacing: 0;
     line-height: var(--line-height-3xl);
   }
+
+  .page-favorites .exercises-scroll-container {
+    max-height: 80vh;
+    overflow-y: auto;
+    padding-right: 8px;
+    scrollbar-gutter: stable;
+    margin-bottom: 32px;
+  }
+
+  .page-favorites .exercises-scroll-container::-webkit-scrollbar {
+    width: 8px;
+    background-color: #e0e0e0;
+  }
+
+  .page-favorites .exercises-scroll-container::-webkit-scrollbar-thumb {
+    background-color: var(--color-dark-gray);
+    border-radius: 4px;
+  }
 }

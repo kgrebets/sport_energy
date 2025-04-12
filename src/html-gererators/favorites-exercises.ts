@@ -1,8 +1,9 @@
-import { Exercise } from '../types/general.types';
+import { Exercise } from '../js/types/general.types';
+
 
 export function renderExerciseCard(exercise: Exercise): string {
-  return `
-<li class="exercises-category-tile-item">
+    return `
+<li class="exercises-category-tile-item" data-id="${exercise._id}">
                   <div class="exercises-category-tile-top">
                     <div class="exercises-category-tile-top-wrapper">
                     <span class="exercises-category-tile-badge">WORKOUT</span>
@@ -14,7 +15,7 @@ export function renderExerciseCard(exercise: Exercise): string {
                     </div>
                     <div class="exercises-category-tile-top-wrapper">
                     <span class="exercises-category-tile-start">Start</span>
-                    <button class="" aria-label="Start workout">
+                    <button class="exercises-category-tile-button-start" aria-label="Start workout">
                       <svg class="icon" width="20" height="20">
                         <use href="./img/sprite.svg#arrow-right"></use>
                       </svg>
@@ -50,6 +51,16 @@ export function renderExerciseCard(exercise: Exercise): string {
     `;
 }
 
+ // Check isDesktop
+ function isDesktop(): boolean {
+    return window.innerWidth >= 1024;
+}
+
+function isTablet(): boolean {
+    return window.innerWidth >= 768 && window.innerWidth < 1024;
+  }
+  
+
 export function renderFavorites(data: Exercise[], container: HTMLElement): void {
     if (!data || data.length === 0) {
         container.innerHTML = `
@@ -57,37 +68,53 @@ export function renderFavorites(data: Exercise[], container: HTMLElement): void 
           It appears that you haven't added any exercises to your favorites yet.
           To get started, you can add exercises that you like to your favorites for easier access in the future.
         </p>
-      `;      
-      return;
+      `;
+        return;
     }
 
-    const itemsPerPage = 8;
+
+    let itemsPerPage = 8;
     let currentPage = 1;
-    const totalPages = Math.ceil(data.length / itemsPerPage);
+    let visibleItems: Exercise[];
+    let totalPages = 1;
 
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    const visibleItems = data.slice(startIndex, endIndex);
-    const markup = visibleItems.map(renderExerciseCard).join('');
-
-    container.innerHTML = `<ul class="exercises-list">${markup}</ul>`;
-  
-    // Add pagination
-    const paginationContainer = document.createElement('div');
-    paginationContainer.classList.add('pagination');
-  
-    for (let i = 1; i <= totalPages; i++) {
-      const pageButton = document.createElement('button');
-      pageButton.classList.add('pagination-btn');
-      if (i === currentPage) {
-        pageButton.classList.add('active'); // ✅ Highlight current page
-      }
-      pageButton.textContent = i.toString();
-      pageButton.dataset.page = i.toString();
-      paginationContainer.appendChild(pageButton);
+    if (isDesktop()) {
+        visibleItems = data;
+    } else {
+        if (isTablet()) {
+            itemsPerPage = 10;
+        }
+        totalPages = Math.ceil(data.length / itemsPerPage);
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        visibleItems = data.slice(startIndex, endIndex);
     }
-  
-    container.appendChild(paginationContainer);
-  }
 
-  
+    const markup = visibleItems.map(renderExerciseCard).join('');
+    if (isDesktop()) {
+        container.innerHTML = `
+            <div class="exercises-scroll-container">
+                <ul class="exercises-list">${markup}</ul>
+            </div>
+        `;
+    } else {
+        container.innerHTML = `<ul class="exercises-list">${markup}</ul>`;
+    }
+
+    // Add pagination
+    if (!isDesktop()) {
+        const paginationContainer = document.createElement('div');
+        paginationContainer.classList.add('pagination');
+        for (let i = 1; i <= totalPages; i++) {
+            const pageButton = document.createElement('button');
+            pageButton.classList.add('pagination-btn');
+            if (i === currentPage) {
+                pageButton.classList.add('active');
+            }
+            pageButton.textContent = i.toString();
+            pageButton.dataset.page = i.toString();
+            paginationContainer.appendChild(pageButton);
+        }
+        container.appendChild(paginationContainer);
+    }
+}

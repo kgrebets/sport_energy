@@ -1,6 +1,6 @@
 import { Exercise } from "./types/general.types";
-import { renderExerciseCard } from "./services/rendering";
-import { renderFavorites } from "./services/rendering";
+import { renderExerciseCard } from "../html-gererators/favorites-exercises";
+import { renderFavorites } from "../html-gererators/favorites-exercises";
 
 export function initFavorites(): void {
   const favoritesOutputContainer = document.querySelector('.exercises-content') as HTMLElement;
@@ -15,5 +15,32 @@ export function initFavorites(): void {
     }
   }
 
+  function deleteFavorite(id: string): void {
+    const storedFavorites = JSON.parse(localStorage.getItem('favorites') || '[]') as Exercise[];
+    const updatedFavorites = storedFavorites.filter(exercise => exercise._id !== id);
+    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+    renderFavorites(updatedFavorites, favoritesOutputContainer);
+    attachDeleteListeners();
+  }
+
+  function attachDeleteListeners(): void {
+    const trashButtons = favoritesOutputContainer.querySelectorAll<HTMLButtonElement>(
+      '.exercises-category-tile-button-delete'
+    );
+
+    trashButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const id = button.dataset.id;
+        if (!id) return;
+        deleteFavorite(id);
+      });
+    });
+  }
+
   renderFavorites(loadFavorites(), favoritesOutputContainer);
+    attachDeleteListeners();
+
+
+
 }
+
