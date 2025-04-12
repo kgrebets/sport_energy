@@ -9,9 +9,9 @@ export function exercisesMarkup(
   _id: string
 ): string {
   const capitalizedName = capitalizeFirstLetter(name);
-  const iconId =
-    bodyPart.toLowerCase() === 'cardio' ? 'running' : 'fluent-food';
+  const iconId = bodyPart.toLowerCase() === 'cardio' ? 'running' : 'fluent-food';
 
+  const spriteBasePath = `${import.meta.env.BASE_URL}img/sprite.svg`;
   return `
 <li class="exercises-category-tile-item">
   <div class="exercises-category-tile-top">
@@ -22,21 +22,21 @@ export function exercisesMarkup(
       <div class="exercises-category-tile-rating-wrapper">
         <span class="exercises-category-tile-rating">${rating.toFixed(1)}</span>
         <svg class="exercises-category-tile-star-icon" width="16" height="16">
-          <use href="./../img/sprite.svg#Star"></use>
+          <use href="${spriteBasePath}#Star"></use>
         </svg>
       </div>
     </div>
     <button class="exercises-category-tile-button" data-id="${_id}">
       Start
       <svg class="exercises-category-tile-arrow-icon" width="16" height="16">
-        <use href="./../img/sprite.svg#arrow-right"></use>
+        <use href="${spriteBasePath}#arrow-right"></use>
       </svg>
     </button>
   </div>
   <div class="exercises-category-tile-middle">
     <div class="exercises-category-tile-man-icon-container">
       <svg class="exercises-category-tile-man-icon" width="16" height="16">
-        <use href="./../img/sprite.svg#${iconId}"></use>
+        <use href="${spriteBasePath}#${iconId}"></use>
       </svg>
     </div>
     <h3 class="exercises-category-tile-name">${capitalizedName}</h3>
