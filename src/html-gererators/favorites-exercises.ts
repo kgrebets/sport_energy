@@ -3,6 +3,7 @@ import { capitalizeFirstLetter } from '../js/utils/capitalizeFirstLetter';
 
 export function renderExerciseCard(exercise: Exercise): string {
   const capitalizedName = capitalizeFirstLetter(exercise.name);
+  const spriteBasePath = `${import.meta.env.BASE_URL}img/sprite.svg`;
   return `
 <li class="exercises-category-tile-item">
                   <div class="exercises-category-tile-top">
@@ -10,7 +11,7 @@ export function renderExerciseCard(exercise: Exercise): string {
                     <span class="exercises-category-tile-badge">WORKOUT</span>
                     <button class="exercises-category-tile-button-delete" aria-label="Remove from favorites" data-id="${exercise._id}" data-modal-ignore>
                       <svg class="icon" width="20" height="20">
-                        <use href="./img/sprite.svg#trash"></use>
+                        <use href="${spriteBasePath}#trash"></use>
                       </svg>
                     </button>
                     </div>
@@ -18,7 +19,7 @@ export function renderExerciseCard(exercise: Exercise): string {
                     <button class="exercises-category-tile-button-start" aria-label="Start workout" data-id="${exercise._id}">
                      <span class="exercises-category-tile-start">Start</span>
                       <svg class="icon" width="20" height="20">
-                        <use href="./img/sprite.svg#arrow-right"></use>
+                        <use href="${spriteBasePath}#arrow-right"></use>
                       </svg>
                     </button>
                     </div>
@@ -28,7 +29,7 @@ export function renderExerciseCard(exercise: Exercise): string {
                   <div class="exercises-category-tile-middle">
                     <div class="exercises-category-tile-man-icon-container">
                       <svg class="exercises-category-tile-man-icon" width="24" height="24">
-                        <use href="./img/sprite.svg#running"></use>
+                        <use href="${spriteBasePath}#running"></use>
                       </svg>
                     </div>
                     <h3 class="exercise-name">${capitalizedName}</h3>

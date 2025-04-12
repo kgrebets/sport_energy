@@ -4,6 +4,7 @@ import { capitalizeFirstLetter } from '../js/utils/capitalizeFirstLetter';
 
 export function generateExerciseModal(data: ExerciseResponse) {
   const capitalizedName = capitalizeFirstLetter(data.name);
+  const spriteBasePath = `${import.meta.env.BASE_URL}img/sprite.svg`;
   return `
     <div class="modal-backdrop" id="exercise-modal-backdrop">
       <div class="modal exercise-modal" id="exercise-modal">
@@ -66,7 +67,7 @@ export function generateExerciseModal(data: ExerciseResponse) {
                   : 'Add to favorites'
               }
                <svg class="icon heart-icon" width="20" height="20">
-                  <use href="./img/sprite.svg#heart"></use>
+                  <use href="${spriteBasePath}#heart"></use>
               </svg>
               </button>
               <button id="rate-btn" class="btn-black">Give a rating</button>
