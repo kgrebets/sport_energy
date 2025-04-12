@@ -1,4 +1,4 @@
-import{Y as w,f as I,i as E}from"./assets/init-footer-CioJlKFE.js";import"./assets/vendor-BAoYjrW1.js";function P(s){return`
+import{Y as w,f as I,i as E}from"./assets/init-footer-BoMP6IEo.js";import"./assets/vendor-BAoYjrW1.js";function P(s){return`
 <li class="exercises-category-tile-item" data-id="${s._id}">
                   <div class="exercises-category-tile-top">
                     <div class="exercises-category-tile-top-wrapper">
