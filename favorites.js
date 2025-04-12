@@ -1,5 +1,5 @@
-import{c as m,d as c,Y as p,f as y,i as f,b as h,F as x}from"./assets/modal-controller-BtdzKvlk.js";import"./assets/vendor-BAoYjrW1.js";function b(e){const a=m(e.name);return`
-<li class="exercises-category-tile-item" data-id="${e._id}">
+import{c as m,d as c,Y as p,f as y,i as f,b as h,F as x}from"./assets/modal-controller-BN1Pmi3B.js";import"./assets/vendor-BAoYjrW1.js";function b(e){const a=m(e.name);return`
+<li class="exercises-category-tile-item">
                   <div class="exercises-category-tile-top">
                     <div class="exercises-category-tile-top-wrapper">
                     <span class="exercises-category-tile-badge">WORKOUT</span>
@@ -10,8 +10,8 @@ import{c as m,d as c,Y as p,f as y,i as f,b as h,F as x}from"./assets/modal-cont
                     </button>
                     </div>
                     <div class="exercises-category-tile-top-wrapper">
-                    <span class="exercises-category-tile-start">Start</span>
-                    <button class="exercises-category-tile-button-start" aria-label="Start workout">
+                    <button class="exercises-category-tile-button-start" aria-label="Start workout" data-id="${e._id}">
+                     <span class="exercises-category-tile-start">Start</span>
                       <svg class="icon" width="20" height="20">
                         <use href="./img/sprite.svg#arrow-right"></use>
                       </svg>
@@ -19,7 +19,7 @@ import{c as m,d as c,Y as p,f as y,i as f,b as h,F as x}from"./assets/modal-cont
                     </div>
 
                   </div>
-            
+
                   <div class="exercises-category-tile-middle">
                     <div class="exercises-category-tile-man-icon-container">
                       <svg class="exercises-category-tile-man-icon" width="24" height="24">
@@ -28,7 +28,7 @@ import{c as m,d as c,Y as p,f as y,i as f,b as h,F as x}from"./assets/modal-cont
                     </div>
                     <h3 class="exercise-name">${a}</h3>
                   </div>
-            
+
                   <div class="exercises-category-tile-bottom">
                     <div class="exercises-category-tile-bottom-item">
                       <span class="exercises-category-tile-bottom-title">Burned calories:</span>
