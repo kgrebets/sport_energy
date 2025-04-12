@@ -1,8 +1,7 @@
 import axios from "axios";
-import {YOUR_ENERGY_API_URL} from "../constants/general";
-import {showErrorMessage} from "../utils/toasts";
-// TODO: Example of request. Remove when go live.
-// import {ExercisesRequest, ExercisesResponse, FilterRequest, FilterResponse} from "../types/api-types";
+import { YOUR_ENERGY_API_URL } from "../constants/general";
+import { showErrorMessage } from "../utils/toasts";
+import { hideLoader, showLoader } from "../loader";
 
 /**
  * Makes an asynchronous HTTP GET request to the specified API endpoint and retrieves data.
@@ -17,14 +16,17 @@ import {showErrorMessage} from "../utils/toasts";
  */
 export const makeGetRequest = async <T, K>(endpoint: string, requestData?: Partial<T>): Promise<K | undefined> => {
   try {
+    showLoader();
     const { data } = await axios.get<K>(`${YOUR_ENERGY_API_URL}${endpoint}`, {
       params: requestData
     });
-
     return data;
   } catch (e) {
     console.error(e);
     showErrorMessage();
+  }
+  finally {
+    hideLoader();
   }
 }
 
@@ -42,12 +44,16 @@ export const makeGetRequest = async <T, K>(endpoint: string, requestData?: Parti
  */
 export const makePostRequest = async <T, K>(endpoint: string, requestData: T): Promise<K | undefined> => {
   try {
+    showLoader();
     const { data } = await axios.post<K>(`${YOUR_ENERGY_API_URL}${endpoint}`, requestData);
 
     return data;
   } catch (e) {
     console.error(e);
     showErrorMessage();
+  }
+  finally {
+    hideLoader();
   }
 }
 
@@ -65,6 +71,7 @@ export const makePostRequest = async <T, K>(endpoint: string, requestData: T): P
  */
 export const makePatchRequest = async <T, K>(endpoint: string, requestData: T): Promise<K | undefined> => {
   try {
+    showLoader();
     const { data } = await axios.patch<K>(`${YOUR_ENERGY_API_URL}${endpoint}`, requestData);
 
     return data;
@@ -72,20 +79,7 @@ export const makePatchRequest = async <T, K>(endpoint: string, requestData: T): 
     console.error(e);
     showErrorMessage();
   }
+  finally {
+    hideLoader();
+  }
 }
-
-// TODO: Example of request. Remove when go live.
-// makeGetRequest<ExercisesRequest, ExercisesResponse>('exercises', {
-//   bodypart: 'back',
-//   muscles: 'abductors',
-//   equipment: 'band',
-//   keyword: 'back',
-//   page: 1,
-//   limit: 10,
-// }).then(data => console.log('Exercises', data));
-//
-// makeGetRequest<FilterRequest, FilterResponse>('exercises', {
-//   filter: 'Body parts',
-//   page: 1,
-//   limit: 12,
-// }).then(data => console.log('Filters', data));
