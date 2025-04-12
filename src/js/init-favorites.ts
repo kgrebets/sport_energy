@@ -1,6 +1,6 @@
 import { Exercise } from "./types/general.types";
-import { renderExerciseCard } from "./services/rendering";
-import { renderFavorites } from "./services/rendering";
+import { renderExerciseCard } from "../html-gererators/favorites-exercises";
+import { renderFavorites } from "../html-gererators/favorites-exercises";
 
 export function initFavorites(): void {
   const favoritesOutputContainer = document.querySelector('.exercises-content') as HTMLElement;

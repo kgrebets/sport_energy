@@ -1,4 +1,4 @@
-import { Exercise } from '../types/general.types';
+import { Exercise } from '../js/types/general.types';
 
 
 export function renderExerciseCard(exercise: Exercise): string {
