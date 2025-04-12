@@ -362,14 +362,18 @@
   }
 
   .page-favorites .exercises-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     gap: var(--indent-4);
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .page-favorites .exercises-category-tile-item {
-    min-width: 335px;
-    flex: 1 1 calc(50% - var(--indent-5));
-    max-width: calc(50% - var(--indent-5));
-    box-sizing: border-box;
+    flex: 1 1 calc(50% - var(--indent-4));
+    min-width: 0;
+    max-width: none;
   }
 }
 
