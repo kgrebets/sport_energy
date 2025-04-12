@@ -362,7 +362,10 @@
   }
 
   .page-favorites .exercises-category-tile-item {
-    width: calc((100% - 1 * var(--indent-4)) / 2);
+    min-width: 335px;
+    flex: 1 1 calc(50% - var(--indent-5));
+    max-width: calc(50% - var(--indent-5));
+    box-sizing: border-box;
   }
 }
 
