@@ -197,6 +197,7 @@
 
 .page-favorites .exercises-content {
   margin-top: var(--indent-5);
+  margin-bottom: var(--indent-8);
 }
 
 .page-favorites .exercises-list {
@@ -213,6 +214,9 @@
   border-radius: var(--border-radius-l);
   padding: var(--indent-4);
   width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .page-favorites .exercises-category-tile-top {
@@ -331,32 +335,15 @@
   color: var(--color-dark-gray);
 }
 
-.page-favorites .pagination {
-  gap: var(--indent-2);
-}
-
-.page-favorites .pagination-btn {
-  width: 14px;
-  height: 32px;
-  font-size: 24px;
+.page-favorites .exercise-name {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-xl);
   font-weight: var(--font-weight-regular);
-  font-family: 'DM Sans', sans-serif;
-  color: var(--color-light-gray-secondary);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  background: none;
-  padding: 0;
-}
-
-.page-favorites .pagination-btn.active {
-  width: 32px;
-  border: 1px solid var(--color-dark-gray);
-  border-radius: 18px;
-  color: var(--color-dark-gray);
-  padding: 0 5px;
-  text-align: center;
+  margin: 0;
 }
 
 @media only screen and (min-width: 768px) {
@@ -380,12 +367,15 @@
     min-width: initial;
     max-width: 100%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
   }
 }
 
 @media only screen and (min-width: 1024px) {
   .page-favorites .exercises-content {
     margin-top: 0;
+    margin-bottom: var(--indent-8);
   }
 
   .page-favorites .favorites-content {
@@ -423,23 +413,5 @@
     font-weight: var(--font-weight-regular);
     letter-spacing: 0;
     line-height: var(--line-height-3xl);
-  }
-
-  .page-favorites .exercises-scroll-container {
-    max-height: 80vh;
-    overflow-y: auto;
-    padding-right: 8px;
-    scrollbar-gutter: stable;
-    margin-bottom: 32px;
-  }
-
-  .page-favorites .exercises-scroll-container::-webkit-scrollbar {
-    width: 8px;
-    background-color: #e0e0e0;
-  }
-
-  .page-favorites .exercises-scroll-container::-webkit-scrollbar-thumb {
-    background-color: var(--color-dark-gray);
-    border-radius: 4px;
   }
 }
