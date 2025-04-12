@@ -7,6 +7,7 @@ import {
 import { ExerciseResponse } from '../js/types/response.types';
 import { setupRatingStars, setupFormSubmit } from './modal-rating-handler';
 import { getExerciseById } from '../services/ exercises-service';
+import { favoritesService } from '../services/favorites-service';
 
 export function initExerciseEvents(container: HTMLElement) {
   container.addEventListener('click', async e => {
@@ -40,9 +41,10 @@ export function initExerciseModal(exercise: ExerciseResponse) {
     });
   document.addEventListener('keydown', escHandler);
 
-  document
-    .getElementById('fav-btn')
-    ?.addEventListener('click', () => toggleFavorite(exercise._id));
+  document.getElementById('fav-btn')?.addEventListener('click', () => {
+    favoritesService.toggleFavorite(exercise._id);
+    closeModal();
+  });
   document.getElementById('rate-btn')?.addEventListener('click', () => {
     closeModal();
     openRatingModal(exercise._id);
@@ -75,17 +77,4 @@ function escHandler(e: KeyboardEvent) {
 function closeModal() {
   document.querySelector('.modal-backdrop')?.remove();
   document.removeEventListener('keydown', escHandler);
-}
-
-function toggleFavorite(id: string) {
-  const favs = JSON.parse(localStorage.getItem('favorites') || '[]');
-  const index = favs.indexOf(id);
-  if (index !== -1) {
-    favs.splice(index, 1);
-  } else {
-    favs.push(id);
-  }
-  localStorage.setItem('favorites', JSON.stringify(favs));
-  closeModal();
-  // optionally rerender UI
 }
