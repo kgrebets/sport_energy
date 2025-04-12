@@ -1,6 +1,7 @@
 import axios from "axios";
 import {YOUR_ENERGY_API_URL} from "../constants/general";
 import {showErrorMessage} from "../utils/toasts";
+import { hideLoader, showLoader } from "../loader";
 // TODO: Example of request. Remove when go live.
 // import {ExercisesRequest, ExercisesResponse, FilterRequest, FilterResponse} from "../types/api-types";
 
@@ -17,12 +18,14 @@ import {showErrorMessage} from "../utils/toasts";
  */
 export const makeGetRequest = async <T, K>(endpoint: string, requestData?: Partial<T>): Promise<K | undefined> => {
   try {
+    showLoader();
     const { data } = await axios.get<K>(`${YOUR_ENERGY_API_URL}${endpoint}`, {
       params: requestData
     });
-
+    hideLoader();
     return data;
   } catch (e) {
+    hideLoader();
     console.error(e);
     showErrorMessage();
   }
