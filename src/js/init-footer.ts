@@ -34,7 +34,8 @@ export function initFooter() {
     try {
       const response = await makePostRequest<SubscriptionRequest, void>(
         'subscription',
-        { email }
+        { email },
+        false
       );
 
       if (response === undefined) {
@@ -49,11 +50,19 @@ export function initFooter() {
         position: 'topRight',
       });
     } catch (error) {
-      showErrorMessage({
-        title: 'Error',
-        message: 'Failed to subscribe. Please try again later.',
-        position: 'topRight',
-      });
+      if (error && 'status' in error && error.status === 409) {
+        showErrorMessage({
+          title: 'Error',
+          message: 'You are already subscribed to our newsletter.',
+          position: 'topRight',
+        });
+      } else {
+        showErrorMessage({
+          title: 'Error',
+          message: 'Failed to subscribe. Please try again later.',
+          position: 'topRight',
+        });
+      }
     }
   }
 
