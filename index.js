@@ -1,4 +1,4 @@
-import{m as S,c as H,g as T,s as k,a as L,f as P,i as N,b as A}from"./assets/modal-controller-DxSv6b_y.js";import"./assets/vendor-BAoYjrW1.js";async function R(s){const e=await S("filters",s);if(!e)throw new Error("Cant' get filters");return e}function B(s){return s.map(e=>`
+import{m as S,c as H,g as T,s as k,a as L,f as P,i as N,b as A}from"./assets/modal-controller-BojF9xHM.js";import"./assets/vendor-BAoYjrW1.js";async function R(s){const e=await S("filters",s);if(!e)throw new Error("Cant' get filters");return e}function B(s){return s.map(e=>`
           <li class="filter-card" data-filter-type="${e.filter}" data-filter-name="${e.name}">
             <img src="${e.imgURL}" alt="${e.name}" />
             <div class="filter-info">
