@@ -159,7 +159,7 @@
   }
 
   .modal-title {
-    font-size: 2var(--indent-2);
+    font-size: 28px;
     margin-bottom: var(--indent-3);
   }
 
@@ -172,7 +172,7 @@
   .stars {
     display: flex;
     gap: 4px;
-    font-size: 1var(--indent-2);
+    font-size: 18px;
     color: #666;
   }
 
