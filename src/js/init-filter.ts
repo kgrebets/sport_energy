@@ -6,8 +6,10 @@ import { exercisesMarkup } from '../html-gererators/exercises-markup';
 import { ExercisesRequest } from './types/request.types';
 import { ExercisesResponse } from './types/response.types';
 import { getExercises } from '../services/ exercises-service';
+import { scrollToContent } from './utils/scrollToContent';
 
 export function initFilters(): void {
+  const scrollToQuerySelector = '.exercises-header';
   const filtersOutputContainer = document.querySelector('.filters-output') as HTMLElement;
   const tabsContainer = document.querySelector('.filter-tabs') as HTMLElement;
   const paginationContainer = document.querySelector('.filter-pagination') as HTMLElement;
@@ -34,10 +36,10 @@ export function initFilters(): void {
     const formData = new FormData(exercisesFiltersForm);
     currentKeyword = formData.get('keyword') as string;
 
-    loadExercises(currentFilterKey, currentFilterName, currentPage);
+    loadExercises(currentFilterKey, currentFilterName, currentPage, false);
   });
 
-  function loadFilters(filter: FilterType, page: number): void {
+  function loadFilters(filter: FilterType, page: number, withScroll = true): void {
     const limit = 12;
     filtersOutputContainer.innerHTML = '';
     paginationContainer.innerHTML = '';
@@ -58,6 +60,10 @@ export function initFilters(): void {
         currentKeyword = "";
 
         attachFilterCardClickHandlers();
+
+        if (withScroll) {
+          scrollToContent(scrollToQuerySelector);
+        }
       })
       .catch(error => showErrorMessage({
         title: 'Error',
@@ -70,6 +76,7 @@ export function initFilters(): void {
     filterKey: string,
     filterValue: string,
     page: number,
+    withScroll = true
   ): Promise<void> {
     if (!exercisesListContainer || !exercisesPaginationContainer) return;
     const limit = 10;
@@ -111,6 +118,10 @@ export function initFilters(): void {
           message: " No excersies found",
           position: 'topRight'
         });
+      }
+
+      if (withScroll) {
+        scrollToContent(scrollToQuerySelector);
       }
     } catch (error: any) {
       showErrorMessage({
@@ -208,5 +219,5 @@ export function initFilters(): void {
     loadFilters(currentFilter, currentPage);
   });
 
-  loadFilters(currentFilter, currentPage);
+  loadFilters(currentFilter, currentPage, false);
 }
