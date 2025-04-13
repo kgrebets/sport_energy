@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { YOUR_ENERGY_API_URL } from "../constants/general";
-import { showErrorMessage } from "../utils/toasts";
-import { hideLoader, showLoader } from "../loader";
+import { YOUR_ENERGY_API_URL } from '../constants/general';
+import { showErrorMessage } from '../utils/toasts';
+import { hideLoader, showLoader } from '../loader';
 
 /**
  * Makes an asynchronous HTTP GET request to the specified API endpoint and retrieves data.
@@ -14,21 +14,23 @@ import { hideLoader, showLoader } from "../loader";
  *
  * @returns {Promise<K>} A promise that resolves to the data retrieved from the API response.
  */
-export const makeGetRequest = async <T, K>(endpoint: string, requestData?: Partial<T>): Promise<K | undefined> => {
+export const makeGetRequest = async <T, K>(
+  endpoint: string,
+  requestData?: Partial<T>
+): Promise<K | undefined> => {
   try {
     showLoader();
     const { data } = await axios.get<K>(`${YOUR_ENERGY_API_URL}${endpoint}`, {
-      params: requestData
+      params: requestData,
     });
     return data;
   } catch (e) {
     console.error(e);
     showErrorMessage();
-  }
-  finally {
+  } finally {
     hideLoader();
   }
-}
+};
 
 /**
  * Sends an asynchronous POST request to a specified API endpoint with the provided request data,
@@ -42,20 +44,30 @@ export const makeGetRequest = async <T, K>(endpoint: string, requestData?: Parti
  *
  * @returns {Promise<K>} A promise that resolves to the response data from the server.
  */
-export const makePostRequest = async <T, K>(endpoint: string, requestData: T): Promise<K | undefined> => {
+export const makePostRequest = async <T, K>(
+  endpoint: string,
+  requestData: T,
+  autoError: boolean = true
+): Promise<K | undefined> => {
   try {
     showLoader();
-    const { data } = await axios.post<K>(`${YOUR_ENERGY_API_URL}${endpoint}`, requestData);
+    const { data } = await axios.post<K>(
+      `${YOUR_ENERGY_API_URL}${endpoint}`,
+      requestData
+    );
 
     return data;
   } catch (e) {
     console.error(e);
-    showErrorMessage();
-  }
-  finally {
+    if (autoError) {
+      showErrorMessage();
+    } else {
+      throw e;
+    }
+  } finally {
     hideLoader();
   }
-}
+};
 
 /**
  * Sends an asynchronous HTTP PATCH request to the specified API endpoint.
@@ -69,10 +81,16 @@ export const makePostRequest = async <T, K>(endpoint: string, requestData: T): P
  *
  * @throws {Error} Throws an error if the HTTP request fails or if there is an issue with the response.
  */
-export const makePatchRequest = async <T, K>(endpoint: string, requestData: T): Promise<K | undefined> => {
+export const makePatchRequest = async <T, K>(
+  endpoint: string,
+  requestData: T
+): Promise<K | undefined> => {
   try {
     showLoader();
-    const { data } = await axios.patch<K>(`${YOUR_ENERGY_API_URL}${endpoint}`, requestData);
+    const { data } = await axios.patch<K>(
+      `${YOUR_ENERGY_API_URL}${endpoint}`,
+      requestData
+    );
 
     return data;
   } catch (e: AxiosError | Error) {
@@ -87,8 +105,7 @@ export const makePatchRequest = async <T, K>(endpoint: string, requestData: T): 
     } else {
       showErrorMessage();
     }
-  }
-  finally {
+  } finally {
     hideLoader();
   }
-}
+};

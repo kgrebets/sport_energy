@@ -346,6 +346,31 @@
   margin: 0;
 }
 
+@media only screen and (max-width: 767px) {
+  .page-favorites .exercises-content {
+    overflow-x: hidden;
+  }
+
+  .page-favorites .exercises-list {
+    box-sizing: border-box;
+    padding: 0 var(--indent-1);
+  }
+
+  .page-favorites .exercises-category-tile-item {
+    padding: var(--indent-2);
+    box-sizing: border-box;
+  }
+
+  .page-favorites .exercises-category-tile-bottom-item {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .page-favorites .exercises-category-tile-bottom-value {
+    max-width: 35px;
+  }
+}
+
 @media only screen and (min-width: 768px) {
   .page-favorites .exercises-content {
     margin-top: var(--indent-5);
