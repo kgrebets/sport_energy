@@ -35,16 +35,15 @@ document.addEventListener('DOMContentLoaded', () => {
   ) as HTMLAnchorElement | null;
 
   const setActiveLink = () => {
-    const currentPage = window.location.pathname;
-
     if (homeLinkDesktop && favoritesLinkDesktop) {
       homeLinkDesktop.classList.remove('active-oval');
       favoritesLinkDesktop.classList.remove('active-oval');
 
-      if (currentPage === '/index.html' || currentPage === '/') {
-        homeLinkDesktop.classList.add('active-oval');
-      } else if (currentPage === '/favorites.html') {
+      if (window.location.pathname.lastIndexOf("favorites.html") !== -1) {
         favoritesLinkDesktop.classList.add('active-oval');
+      }
+      else {
+        homeLinkDesktop.classList.add('active-oval');
       }
     }
   };
