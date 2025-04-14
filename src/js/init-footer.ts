@@ -10,11 +10,63 @@ export function initFooter() {
     footerYearElement.textContent = `©${new Date().getFullYear()}`;
   }
 
+  initExternalLinkSecurity();
+
   if (!form) {
     return;
   }
 
   form.addEventListener('submit', handleSubscriptionSubmit);
+
+  function initExternalLinkSecurity(): void {
+    const socialLinks = document.querySelectorAll('.footer-social-item a');
+
+    socialLinks.forEach(link => {
+      if (link instanceof HTMLAnchorElement) {
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+
+        link.addEventListener('click', event => {
+          if (!isValidExternalUrl(link.href)) {
+            event.preventDefault();
+            showErrorMessage({
+              title: 'Security Warning',
+              message:
+                'This link appears to be suspicious and has been blocked.',
+              position: 'topRight',
+            });
+          }
+        });
+      }
+    });
+  }
+
+  function isValidExternalUrl(url: string): boolean {
+    try {
+      const urlObj = new URL(url);
+
+      const trustedDomains = [
+        'facebook.com',
+        'www.facebook.com',
+        'instagram.com',
+        'www.instagram.com',
+        'youtube.com',
+        'www.youtube.com',
+        'youtu.be',
+      ];
+
+      const isDomainTrusted = trustedDomains.some(
+        domain =>
+          urlObj.hostname === domain || urlObj.hostname.endsWith(`.${domain}`)
+      );
+
+      const isSecureProtocol = urlObj.protocol === 'https:';
+
+      return isDomainTrusted && isSecureProtocol;
+    } catch (error) {
+      return false;
+    }
+  }
 
   async function handleSubscriptionSubmit(event: Event): Promise<void> {
     event.preventDefault();
