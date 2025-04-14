@@ -21,7 +21,9 @@ export function initExerciseEvents(container: HTMLElement) {
       return;
     }
 
-    const button = target.closest('.exercises-category-tile-button, .exercises-category-tile-button-start') as HTMLElement;
+    const button = target.closest(
+      '.exercises-category-tile-button, .exercises-category-tile-button-start'
+    ) as HTMLElement;
     if (!button) return;
 
     const id = button.getAttribute('data-id');
@@ -51,7 +53,6 @@ export function initExerciseModal(exercise: ExerciseResponse) {
 
   document.getElementById('fav-btn')?.addEventListener('click', () => {
     const added = favoritesService.toggleFavorite(exercise._id);
-    closeModal();
 
     showSuccessMessage({
       title: added ? 'Successfully added' : 'Successfully removed',
@@ -60,10 +61,8 @@ export function initExerciseModal(exercise: ExerciseResponse) {
         : 'The exercise was removed from favorites!',
       position: 'topRight',
     });
-
   });
   document.getElementById('rate-btn')?.addEventListener('click', () => {
-    closeModal();
     openRatingModal(exercise._id);
   });
 }
