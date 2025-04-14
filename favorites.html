@@ -9,17 +9,22 @@
   <title>Favorites</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&display=swap" rel="stylesheet" />
   <script type="module" crossorigin src="/sport_energy/favorites.js"></script>
   <link rel="modulepreload" crossorigin href="/sport_energy/assets/vendor-BAoYjrW1.js">
-  <link rel="modulepreload" crossorigin href="/sport_energy/assets/modal-controller-C1hzPEXd.js">
+  <link rel="modulepreload" crossorigin href="/sport_energy/assets/init-scroll-top-D3T1kj8Z.js">
   <link rel="stylesheet" crossorigin href="/sport_energy/assets/vendor-D_nxXpU-.css">
-  <link rel="stylesheet" crossorigin href="/sport_energy/assets/modal-controller-CKXDEza_.css">
+  <link rel="stylesheet" crossorigin href="/sport_energy/assets/init-scroll-top-BUQOG12E.css">
 </head>
 
 <body class="page-favorites">
+  <button id="scrollToTopBtn" class="scroll-to-top" aria-label="Scroll to top">
+    <svg width="40" height="40" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="12" r="12" fill="rgb(36, 36, 36)" />
+        <path d="M12 6 L12 18" stroke="white" stroke-width="1" stroke-linecap="round" />
+        <path d="M8 10 L12 6 L16 10" stroke="white" stroke-width="1" stroke-linecap="round" fill="none" />
+    </svg>
+</button>
   <header class="header">
   <div class="container">
     <a class="nav-logo" href="./index.html" aria-label="Site logo">
@@ -125,7 +130,6 @@
 
   <main>
     <div class="container">
-      <!-- Loads the specified .html file -->
       <h1 class="favorites-heading">Favorites</h1>
       <div class="favorites-content">
         <div class="favorites-quote">

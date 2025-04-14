@@ -1,4 +1,4 @@
-import{c as m,d as n,Y as p,f as y,i as f,b as h,F as x}from"./assets/modal-controller-C1hzPEXd.js";import"./assets/vendor-BAoYjrW1.js";function b(e){const r=m(e.name),a="/sport_energy/img/sprite.svg";return`
+import{c as p,e as n,Y as m,f as y,i as f,b as h,F as x,d as b}from"./assets/init-scroll-top-D3T1kj8Z.js";import"./assets/vendor-BAoYjrW1.js";function E(e){const r=p(e.name),a="/sport_energy/img/sprite.svg";return`
 <li class="exercises-category-tile-item">
                   <div class="exercises-category-tile-top">
                     <div class="exercises-category-tile-top-wrapper">
@@ -44,9 +44,9 @@ import{c as m,d as n,Y as p,f as y,i as f,b as h,F as x}from"./assets/modal-cont
                     </div>
                   </div>
                 </li>
-    `}function d(){const e=document.querySelector(".exercises-content");if(!e)return;async function r(s){try{const t=await fetch(`${p}exercises/${s}`);if(!t.ok)throw new Error("Exercise not found");return await t.json()}catch(t){return console.error(`Failed to fetch exercise with id ${s}:`,t),null}}function a(s){n.removeFavorite(s)}function u(){e.querySelectorAll(".exercises-category-tile-button-delete").forEach(t=>{t.addEventListener("click",()=>{const i=t.dataset.id;i&&a(i)})})}async function v(){const s=n.getFavoriteIds();console.log(s);const t=s.map(o=>r(o)),c=(await Promise.all(t)).filter(o=>o!==null);if(c.length===0){e.innerHTML=`
+    `}function d(){const e=document.querySelector(".exercises-content");if(!e)return;async function r(s){try{const t=await fetch(`${m}exercises/${s}`);if(!t.ok)throw new Error("Exercise not found");return await t.json()}catch(t){return console.error(`Failed to fetch exercise with id ${s}:`,t),null}}function a(s){n.removeFavorite(s)}function u(){e.querySelectorAll(".exercises-category-tile-button-delete").forEach(t=>{t.addEventListener("click",()=>{const i=t.dataset.id;i&&a(i)})})}async function v(){const s=n.getFavoriteIds();console.log(s);const t=s.map(o=>r(o)),c=(await Promise.all(t)).filter(o=>o!==null);if(c.length===0){e.innerHTML=`
         <p class="no-favorites">
           It appears that you haven't added any exercises to your favorites yet.
           To get started, you can add exercises that you like to your favorites for easier access in the future.
-        </p>`;return}const g=c.map(b).join("");e.innerHTML=`<ul class="exercises-list">${g}</ul>`,u()}v()}y();d();f();const l=document.querySelector(".favorites-list");l instanceof HTMLElement&&h(l);document.addEventListener(x,()=>{d()});
+        </p>`;return}const g=c.map(E).join("");e.innerHTML=`<ul class="exercises-list">${g}</ul>`,u()}v()}y();d();f();const l=document.querySelector(".favorites-list");l instanceof HTMLElement&&h(l);document.addEventListener(x,()=>{d()});b();
 //# sourceMappingURL=favorites.js.map
