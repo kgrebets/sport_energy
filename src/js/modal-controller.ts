@@ -8,6 +8,7 @@ import { ExerciseResponse } from '../js/types/response.types';
 import { setupRatingStars, setupFormSubmit } from './modal-rating-handler';
 import { getExerciseById } from '../services/ exercises-service';
 import { favoritesService } from '../services/favorites-service';
+import { showSuccessMessage } from './utils/toasts';
 
 export function initExerciseEvents(container: HTMLElement) {
   container.addEventListener('click', async e => {
@@ -49,8 +50,17 @@ export function initExerciseModal(exercise: ExerciseResponse) {
   document.addEventListener('keydown', escHandler);
 
   document.getElementById('fav-btn')?.addEventListener('click', () => {
-    favoritesService.toggleFavorite(exercise._id);
+    const added = favoritesService.toggleFavorite(exercise._id);
     closeModal();
+
+    showSuccessMessage({
+      title: added ? 'Successfully added' : 'Successfully removed',
+      message: added
+        ? 'The exercise was added to favorites!'
+        : 'The exercise was removed from favorites!',
+      position: 'topRight',
+    });
+
   });
   document.getElementById('rate-btn')?.addEventListener('click', () => {
     closeModal();
