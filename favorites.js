@@ -1,4 +1,4 @@
-import{c as p,e as n,Y as m,f as y,i as f,b as h,F as x,d as b}from"./assets/init-scroll-top-C-uYahzI.js";import"./assets/vendor-BAoYjrW1.js";function E(e){const r=p(e.name),a="/sport_energy/img/sprite.svg";return`
+import{c as p,e as n,Y as m,f as y,i as f,b as h,F as x,d as b}from"./assets/init-scroll-top-MbRvxWhQ.js";import"./assets/vendor-BAoYjrW1.js";function E(e){const r=p(e.name),a="/sport_energy/img/sprite.svg";return`
 <li class="exercises-category-tile-item">
                   <div class="exercises-category-tile-top">
                     <div class="exercises-category-tile-top-wrapper">
