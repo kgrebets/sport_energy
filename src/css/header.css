@@ -1,18 +1,21 @@
 .header {
-  padding: 20px;
+  padding: 24px 0 20px 0;
 }
 
 .header > .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 0;
 }
 
 .burger {
   border: none;
   background: none;
 }
-
+.socialmedia-icons {
+  display: none;
+}
 .main-nav {
   display: none;
 }
@@ -126,10 +129,6 @@
 }
 
 @media (min-width: 601px) {
-  .header {
-    padding: 28px 0;
-  }
-
   .burger {
     display: none;
   }
@@ -197,6 +196,10 @@
 }
 
 @media (min-width: 1025px) {
+  .header {
+    padding: 28px 0;
+  }
+
   .main-nav {
     width: 265px;
     padding: 0 50px;
